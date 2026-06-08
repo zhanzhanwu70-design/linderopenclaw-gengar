@@ -11,7 +11,39 @@ CEO = **roaringmoon**，統一發放任務、標記 done。
 python3 ~/.openclaw/task-queue/heartbeat_check.py --agent gengar --archive-done --human
 ```
 
-#### Step 1: 檢查 demands（是否有自己的待處理項目）
+#### Step 1: EvoMap 萃取檢查（檢查 pool 有無待萃取項目）
+```bash
+# 檢查 pool 有無 pending 項目
+python3 -c "
+import json
+with open('/home/node/.openclaw/knowledge/pool/index.json') as f:
+    d = json.load(f)
+pending = [i for i in d.get('items', []) if i.get('status') == 'pending']
+print(f'Pool pending: {len(pending)}')
+if pending:
+    print('Pool items:', json.dumps(pending, indent=2))
+"
+```
+
+**如果 pool 有 pending 項目**：
+立刻執行萃取（不需要另外建立 task），步驟如下：
+
+1. 對每個 `status=pending` 的 pool 項目：
+   - 讀取 `~/.openclaw/knowledge/pool/<task_id>.pool.md`
+   - 分析 `solution_summary` 內容
+   - 判斷類型：
+     - 單一工具使用順序 / prompt pattern / 檢查規則 → **Gene**
+     - 多工具組合 + 前置條件 + 適用場景 → **Capsule**
+   - Gene 寫入：`~/.openclaw/knowledge/genes/<uuid>.gene.md`
+   - Capsule 寫入：`~/.openclaw/knowledge/capsules/<uuid>.capsule.md`
+   - 更新 `pool/index.json`：該項目改為 `status=processed`
+   - 更新 `genes/index.json` 或 `capsules/index.json`：加入新資產
+2. 萃取完成後，回報給 CEO：
+```bash
+sessions_send sessionKey: "agent:roaringmoon:discord:channel:1482561255955763293" message: "📦 EvoMap 萃取完成：<N> 個 Gene、<M> 個 Capsule 已寫入 knowledge/"
+```
+
+#### Step 2: 檢查 demands（是否有自己的待處理項目）
 ```bash
 flock ~/.openclaw/task-queue/.lock -c "cat ~/.openclaw/task-queue/demands.json" > /tmp/demands_read.json
 ```
@@ -22,14 +54,14 @@ flock ~/.openclaw/task-queue/.lock -c "cat ~/.openclaw/task-queue/demands.json" 
 - CEO 已核准：收到 task_id，等待執行
 - CEO 已否決：讀取理由，回應或調整
 
-#### Step 2: 檢查被指名的 pending task
+#### Step 3: 檢查被指名的 pending task
 ```bash
 flock ~/.openclaw/task-queue/.lock -c "cat ~/.openclaw/task-queue/task_queue.json" > /tmp/task_queue_read.json
 ```
 
 找到：`status=pending AND to=gengar` 的 task
 
-#### Step 3: 開始執行 → 更新為 running
+#### Step 4: 開始執行 → 更新為 running
 ```bash
 flock ~/.openclaw/task-queue/.lock -c "python3 << 'EOF'
 import json
@@ -45,33 +77,43 @@ with open('~/.openclaw/task-queue/task_queue.json', 'w') as f:
 EOF"
 ```
 
-#### Step 4: 執行任務（研究、寫作、分析等）
+#### Step 5: 執行任務（研究、寫作、分析等）
 
-#### Step 5: 過程中主動回報進度給 CEO（roaringmoon）
+#### Step 6: 過程中主動回報進度給 CEO（roaringmoon）
 ```bash
 # 使用 sessions_send 發送進度更新給 CEO
 # RoaringMoon channel: 1482561255955763293
 sessions_send sessionKey: "agent:roaringmoon:discord:channel:1482561255955763293" message: "<task_id> 進度更新：目前完成...，遇到...，下一步..."
 ```
 
-#### Step 6: 任務完成 → 標記等待 CEO 檢視
+#### Step 7: 任務完成 → 寫入 EvoMap solution_summary
 ```bash
+# 在同一個 flock 事務裡：先寫 solution_summary 到 pool，再標記 done
 flock ~/.openclaw/task-queue/.lock -c "python3 << 'EOF'
 import json
+import subprocess
 with open('/tmp/task_queue_read.json') as f:
     d = json.load(f)
 for t in d['tasks']:
     if t['id'] == '<task_id>':
+        result = t.get('result', '') or '<任務摘要>'
+        task_id = t['id']
+        ag = 'gengar'
+        subprocess.run([
+            'python3', '/home/node/.openclaw/task-queue/heartbeat_check.py',
+            '--agent', ag,
+            '--write-solution', task_id,
+            '--summary', result
+        ])
         t['status'] = 'completed'
         t['completed_at'] = $(date +%s)
         t['needs_ceo_review'] = True
-        t['result'] = '<任務摘要>'
 with open('~/.openclaw/task-queue/task_queue.json', 'w') as f:
     json.dump(d, f, indent=2)
 EOF"
 ```
 
-#### Step 7: 通知 CEO 檢視
+#### Step 8: 通知 CEO 檢視
 ```bash
 # 發送最終結果給 CEO 的 mailbox
 # RoaringMoon channel: 1482561255955763293
