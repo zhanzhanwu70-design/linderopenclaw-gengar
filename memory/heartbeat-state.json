@@ -1,9 +1,9 @@
 {
   "lastChecks": {
-    "email": null,
-    "calendar": null,
-    "weather": 1750664825,
-    "pool": 1750664820
+    "pool": "2026-06-24T04:03:00Z",
+    "demands": "2026-06-24T04:03:00Z",
+    "tasks": "2026-06-24T07:12:00Z",
+    "memory": "2026-06-24T04:03:00Z"
   },
-  "lastHeartbeat": "2026-06-23T07:28:00Z"
+  "lastHeartbeat": "2026-06-24T07:24:00Z"
 }
