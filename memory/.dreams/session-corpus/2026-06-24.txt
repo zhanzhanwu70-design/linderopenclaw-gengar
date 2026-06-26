@@ -171,3 +171,4 @@
 [gengar/sessions/gengar/fc1b9605-6934-42b0-af29-a43219d315eb.jsonl#L13] Assistant: All clear. Memory maintenance was done yesterday. Nothing urgent pending. 🐱
 [gengar/sessions/gengar/fe99f007-4bc5-4d1f-8f6a-4c3ba0852feb.jsonl#L10] Assistant: HEARTBEAT_OK 🐱
 [gengar/sessions/gengar/feaefd32-9aff-4f4f-8a13-c26539d95fe7.jsonl#L6] Assistant: HEARTBEAT_OK 🐱 Quick status: All systems nominal. No urgent items — continuing background monitoring.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L1715] Assistant: [assistant turn failed before producing content]
