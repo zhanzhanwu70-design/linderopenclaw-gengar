@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "elle_agent"
+version = "0.1.0"
+description = "Agent for operating ELLE_WS (ROS2 Humble AMR workspace)"
+requires-python = ">=3.10"
+dependencies = [
+    "rclpy",
+    "geometry_msgs",
+    "sensor_msgs",
+    "nav2_msgs",
+    "std_srvs",
+    "action_msgs",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

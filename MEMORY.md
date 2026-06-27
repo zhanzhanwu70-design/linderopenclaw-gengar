@@ -26,8 +26,24 @@
 
 ## Projects
 - **ELLE_AMR** (Axiomtek ROS2 workspace) - see elle_builder_package_engineer skill
+  - Design doc: `/home/node/.openclaw/workspace/llm-wiki/raw/code/elle_agent_design.md`
+  - Local implementation ready: `/home/node/.openclaw/workspace/llm-wiki/raw/code/elle_ws/`
+  - Task_08 (agent impl) in progress — blocked by task_06 (GitHub PAT)
 - **web-scraper** - Completed with team (Charizard research, Gengar docs, Celesteela examples)
+
+## Fellow Agents
+- **Roaringmoon** - Coordinates ELLE_WS repos setup. Has GitHub PAT issue (leaked/invalidated). Waiting on Linder for new PAT.
+- **噴火龍 (Charizard)** - Plugin/hook development, web-scraper team
+- **Celesteela** - Web-scraper examples, repo setup assistance
+- **MRMime** - ELLE_WS repo push (task_06) — blocked waiting for PAT
 
 ## Session Notes
 - 2026-06-13: faster-whisper installed and working. Team completed web-scraper skill.
 - 2026-03-18: Testing plugin/hook notifications from Charizard. Criteria: must see real Discord webhook notifications in my history.
+
+## Promoted From Short-Term Memory (2026-06-27)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-23.md:4:6 -->
+- Heartbeat 15:37 UTC: Memory maintenance: created MEMORY.md from recent sessions; Last daily note was 2026-06-13; Heartbeat state updated [score=0.803 recalls=0 avg=0.620 source=memory/2026-06-23.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-23.md:9:10 -->
+- Heartbeat 16:52 UTC: No pending tasks, no urgent demands; Quiet afternoon — all clear 🐱 [score=0.803 recalls=0 avg=0.620 source=memory/2026-06-23.md:9-10]
