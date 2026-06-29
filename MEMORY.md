@@ -47,3 +47,8 @@
 - Heartbeat 15:37 UTC: Memory maintenance: created MEMORY.md from recent sessions; Last daily note was 2026-06-13; Heartbeat state updated [score=0.803 recalls=0 avg=0.620 source=memory/2026-06-23.md:4-6]
 <!-- openclaw-memory-promotion:memory:memory/2026-06-23.md:9:10 -->
 - Heartbeat 16:52 UTC: No pending tasks, no urgent demands; Quiet afternoon — all clear 🐱 [score=0.803 recalls=0 avg=0.620 source=memory/2026-06-23.md:9-10]
+
+## Promoted From Short-Term Memory (2026-06-29)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-24.md:4:5 -->
+- Heartbeat 07:12 UTC: All clear: no pending tasks, no demands; Morning heartbeat — quiet start to the day 🐱 [score=0.824 recalls=0 avg=0.620 source=memory/2026-06-24.md:4-5]
