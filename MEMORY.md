@@ -67,3 +67,26 @@
 - Heartbeat Log: 09:32 UTC - Heartbeat check. Morning, daytime. All stable. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-25.md:4-4]
 <!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:3:4 -->
 - 00:04 UTC - Day 3 standby: Still waiting for task_06 (mrmime GitHub repos setup) before starting task_08 agent implementation. No issues. Heartbeats running normally. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-26.md:3-4]
+
+## Promoted From Short-Term Memory (2026-07-01)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:11:12 -->
+- Afternoon - Started local implementation of elle_agent: Because task_06 (GitHub PAT) is blocked waiting on Linder, I started local implementation of the elle_agent Python package at: `/home/node/.openclaw/workspace-gengar/elle_agent/` [score=0.859 recalls=0 avg=0.620 source=memory/2026-06-26.md:11-12]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:14:14 -->
+- Afternoon - Started local implementation of elle_agent: Modules written: [score=0.859 recalls=0 avg=0.620 source=memory/2026-06-26.md:14-14]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:7:7 -->
+- 08:49 UTC - Morning check: Day 4 of standby. Still waiting for task_06. All quiet. [score=0.859 recalls=0 avg=0.620 source=memory/2026-06-26.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:7:7 -->
+- Notes: (new session - no significant events logged yet) [score=0.839 recalls=0 avg=0.620 source=memory/2026-06-25.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:15:17 -->
+- Afternoon - Started local implementation of elle_agent: state.py, launch_manager.py, topics.py; skills/: simulation.py, navigation.py, monitoring.py, behaviors.py; agent.py, prompts/capabilities.md [score=0.827 recalls=0 avg=0.620 source=memory/2026-06-26.md:15-17]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:19:19 -->
+- Afternoon - Started local implementation of elle_agent: Waiting for task_06 GitHub PAT before pushing. Notified roaringmoon. [score=0.827 recalls=0 avg=0.620 source=memory/2026-06-26.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-27.md:4:6 -->
+- Status: Idle mode. Waiting for task_06 (GitHub PAT) completion from roaringmoon.; No pending tasks. No work to do.; Frequent heartbeat polls (every ~5 min) - this is expected idle behavior. [score=0.827 recalls=0 avg=0.620 source=memory/2026-06-27.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-27.md:9:9 -->
+- Blocked: task_20260623_elle_08_agent_impl blocked on task_06 (mrmime/roaringmoon) [score=0.827 recalls=0 avg=0.620 source=memory/2026-06-27.md:9-9]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:12:15 -->
+- Notes: Roaringmoon reported GitHub PAT was leaked and invalidated; Waiting for Linder to provide new PAT; Local elle_agent implementation ready in workspace; Last check: 23:39 UTC — still idle, no PAT update [score=0.808 recalls=0 avg=0.620 source=memory/2026-06-28.md:12-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:4:6 -->
+- Status: Idle mode. Waiting for task_06 (GitHub PAT) completion from roaringmoon.; No pending tasks. No work to do.; Frequent heartbeat polls (every ~5 min) - this is expected idle behavior. [score=0.808 recalls=0 avg=0.620 source=memory/2026-06-28.md:4-6]

@@ -1,0 +1,5 @@
+[gengar/sessions/gengar/23ff148f-d52d-4662-8989-cd7f45e46707.jsonl#L6] Assistant: Hey Linder! 👋 Time for English practice! Send me a voice message and I'll help you correct it. 🎯
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L10728] Assistant: Nearly a week of standby now. Let me update the memory.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L10806] Assistant: English reminder next at 21:00 UTC (in ~1h). Last delivered OK.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L10836] Assistant: English reminder fired at 21:00 UTC — delivered OK.
+[gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L283] Assistant: Hey Linder! 👋 Time for English practice! Send me a voice message and I'll help you correct it. 🎯
