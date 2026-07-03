@@ -101,3 +101,12 @@
 - Notes: Roaringmoon reported GitHub PAT was leaked and invalidated; Waiting for Linder to provide new PAT; Local elle_agent implementation ready in workspace; Roaringmoon active on other tasks (multi-agent architecture docs, TOWS video) [score=0.840 recalls=0 avg=0.620 source=memory/2026-06-27.md:12-15]
 <!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:9:9 -->
 - Blocked: task_20260623_elle_08_agent_impl blocked on task_06 (mrmime/roaringmoon) [score=0.819 recalls=0 avg=0.620 source=memory/2026-06-29.md:9-9]
+
+## Promoted From Short-Term Memory (2026-07-03)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:16:16 -->
+- Notes: Late night UTC — Taiwan Monday morning approaching [score=0.888 recalls=0 avg=0.620 source=memory/2026-06-28.md:16-16]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:12:15 -->
+- Notes: Roaringmoon reported GitHub PAT was leaked and invalidated; Waiting for Linder to provide new PAT; Local elle_agent implementation ready in workspace; Last check: 00:24 UTC — still idle, no PAT update [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-29.md:12-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:4:6 -->
+- Status: Idle mode. Waiting for task_06 (GitHub PAT) completion from roaringmoon.; No pending tasks. No work to do.; Frequent heartbeat polls (every ~5 min) - this is expected idle behavior. [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-29.md:4-6]
