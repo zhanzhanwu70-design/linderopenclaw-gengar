@@ -110,3 +110,10 @@
 - Notes: Roaringmoon reported GitHub PAT was leaked and invalidated; Waiting for Linder to provide new PAT; Local elle_agent implementation ready in workspace; Last check: 00:24 UTC — still idle, no PAT update [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-29.md:12-15]
 <!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:4:6 -->
 - Status: Idle mode. Waiting for task_06 (GitHub PAT) completion from roaringmoon.; No pending tasks. No work to do.; Frequent heartbeat polls (every ~5 min) - this is expected idle behavior. [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-29.md:4-6]
+
+## Promoted From Short-Term Memory (2026-07-05)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:4:7 -->
+- Heartbeat Log: 00:04 UTC - Midnight heartbeat. All stable.; 07:54 UTC - Morning heartbeat. Still on standby for PAT. ELLE repos confirmed present locally.; 11:44 UTC - Midday heartbeat. All quiet. No changes.; 16:54 UTC - Afternoon heartbeat. Still on standby (day 7+ since design completed). PAT still not received. [score=0.829 recalls=0 avg=0.620 source=memory/2026-06-30.md:4-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:8:9 -->
+- Heartbeat Log: 21:00 UTC - English reminder fired, delivered OK.; 23:59 UTC - End of June. Still on standby for PAT. 8 days total. [score=0.829 recalls=0 avg=0.620 source=memory/2026-06-30.md:8-9]
