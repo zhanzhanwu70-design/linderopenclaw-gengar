@@ -1,2 +1,26 @@
 [gengar/sessions/gengar/ae74cd3e-8f37-46d0-9b2b-3107229d6bcf.jsonl#L8] Assistant: Hey Linder! 👋 Time for English practice! Send me a voice message tonight and I'll help you correct it. 🎯
 [gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L286] Assistant: Hey Linder! 👋 Time for English practice! Send me a voice message tonight and I'll help you correct it. 🎯
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12667] Assistant: ~10h.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12669] Assistant: ~9h 50m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12671] Assistant: ~9h 45m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12673] Assistant: ~9h 40m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12675] Assistant: ~9h 35m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12677] Assistant: ~9h 30m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12679] Assistant: ~9h 25m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12681] Assistant: ~9h 20m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12683] Assistant: ~9h 15m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12685] Assistant: ~9h 10m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12687] Assistant: ~9h.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12689] Assistant: ~9h.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12691] Assistant: ~8h 55m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12693] Assistant: ~8h 50m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12695] Assistant: ~8h 45m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12699] Assistant: ~8h 35m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12701] Assistant: ~8h 30m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12703] Assistant: ~8h 25m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12705] Assistant: ~8h 20m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12707] Assistant: ~8h 15m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12709] Assistant: ~8h 10m.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12711] Assistant: ~8h.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12713] Assistant: ~8h.
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L12715] Assistant: ~7h 45m.

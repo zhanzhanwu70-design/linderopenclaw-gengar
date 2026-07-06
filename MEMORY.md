@@ -41,33 +41,6 @@
 - 2026-06-13: faster-whisper installed and working. Team completed web-scraper skill.
 - 2026-03-18: Testing plugin/hook notifications from Charizard. Criteria: must see real Discord webhook notifications in my history.
 
-## Promoted From Short-Term Memory (2026-06-27)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-06-23.md:4:6 -->
-- Heartbeat 15:37 UTC: Memory maintenance: created MEMORY.md from recent sessions; Last daily note was 2026-06-13; Heartbeat state updated [score=0.803 recalls=0 avg=0.620 source=memory/2026-06-23.md:4-6]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-23.md:9:10 -->
-- Heartbeat 16:52 UTC: No pending tasks, no urgent demands; Quiet afternoon — all clear 🐱 [score=0.803 recalls=0 avg=0.620 source=memory/2026-06-23.md:9-10]
-
-## Promoted From Short-Term Memory (2026-06-29)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-06-24.md:4:5 -->
-- Heartbeat 07:12 UTC: All clear: no pending tasks, no demands; Morning heartbeat — quiet start to the day 🐱 [score=0.824 recalls=0 avg=0.620 source=memory/2026-06-24.md:4-5]
-
-## Promoted From Short-Term Memory (2026-06-30)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:11:11 -->
-- 09:54 UTC - Morning check-in: Still on standby. Waiting for task_06 (mrmime GitHub repos) before starting task_08 agent implementation. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-25.md:11-11]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:13:13 -->
-- 09:54 UTC - Morning check-in: Heartbeats running normally - no issues. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-25.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:17:17 -->
-- 12:33 UTC - Midday check: All stable. Heartbeats running normally. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-25.md:17-17]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:21:21 -->
-- 13:03 UTC - Afternoon check: Still stable. All services nominal. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-25.md:21-21]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:4:4 -->
-- Heartbeat Log: 09:32 UTC - Heartbeat check. Morning, daytime. All stable. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-25.md:4-4]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:3:4 -->
-- 00:04 UTC - Day 3 standby: Still waiting for task_06 (mrmime GitHub repos setup) before starting task_08 agent implementation. No issues. Heartbeats running normally. [score=0.806 recalls=0 avg=0.620 source=memory/2026-06-26.md:3-4]
-
 ## Promoted From Short-Term Memory (2026-07-01)
 
 <!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:11:12 -->
@@ -117,3 +90,14 @@
 - Heartbeat Log: 00:04 UTC - Midnight heartbeat. All stable.; 07:54 UTC - Morning heartbeat. Still on standby for PAT. ELLE repos confirmed present locally.; 11:44 UTC - Midday heartbeat. All quiet. No changes.; 16:54 UTC - Afternoon heartbeat. Still on standby (day 7+ since design completed). PAT still not received. [score=0.829 recalls=0 avg=0.620 source=memory/2026-06-30.md:4-7]
 <!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:8:9 -->
 - Heartbeat Log: 21:00 UTC - English reminder fired, delivered OK.; 23:59 UTC - End of June. Still on standby for PAT. 8 days total. [score=0.829 recalls=0 avg=0.620 source=memory/2026-06-30.md:8-9]
+
+## Promoted From Short-Term Memory (2026-07-06)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:12:15 -->
+- Notes: Still waiting for task_06 (mrmime GitHub PAT from Linder); Active crons: English reminder at 9 PM UTC (OK); Disabled crons: keep-alive (was too noisy), BBC News (7 errors); Cron "OpenClaw version check" has errors, unclear ownership (mrmime?); left as-is since not mine [score=0.868 recalls=0 avg=0.620 source=memory/2026-06-30.md:12-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:14:14 -->
+- elle_agent Implementation (Ready for Push): **Package:** `elle_agent` — Python ROS2 agent for ELLE_WS AMR [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-01.md:14-14]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:17:20 -->
+- elle_agent Implementation (Ready for Push): `pyproject.toml` — package config; `src/elle_agent/__init__.py`; `src/elle_agent/agent.py` — main ElleAgent class; `src/elle_agent/state.py` — RobotState, RobotMode, skill states [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-01.md:17-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:21:24 -->
+- elle_agent Implementation (Ready for Push): `src/elle_agent/launch_manager.py` — LaunchManager (simulation, slam, localization, navigation, bringup); `src/elle_agent/topics.py` — TopicMonitor + TopicPublisher; `src/elle_agent/skills/__init__.py`; `src/elle_agent/skills/simulation.py` — SimulationSkill [score=0.830 recalls=0 avg=0.620 source=memory/2026-07-01.md:21-24]
