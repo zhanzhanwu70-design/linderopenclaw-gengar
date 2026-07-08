@@ -89,3 +89,12 @@
 - elle_agent Implementation (Ready for Push): **Files (13 total):** [score=0.858 recalls=0 avg=0.620 source=memory/2026-07-01.md:16-16]
 <!-- openclaw-memory-promotion:memory:memory/2026-07-02.md:3:6 -->
 - 2026-07-02 - Day 13 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; No change from yesterday. All systems nominal.; English reminder cron running normally (21:00 UTC daily).; 23:59 UTC — Day 13 standby complete. Still no PAT update. All nominal. [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-02.md:3-6]
+
+## Promoted From Short-Term Memory (2026-07-08)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-03.md:3:6 -->
+- 2026-07-03 - Day 14 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 14 days now. No change. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-03.md:3-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-03.md:7:7 -->
+- 2026-07-03 - Day 14 Standby: 23:59 UTC — Day 14 standby complete. Still no PAT. All nominal. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-03.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-04.md:3:6 -->
+- 2026-07-04 - Day 15 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 15 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-04.md:3-6]
