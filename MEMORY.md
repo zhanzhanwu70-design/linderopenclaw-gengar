@@ -98,3 +98,10 @@
 - 2026-07-03 - Day 14 Standby: 23:59 UTC — Day 14 standby complete. Still no PAT. All nominal. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-03.md:7-7]
 <!-- openclaw-memory-promotion:memory:memory/2026-07-04.md:3:6 -->
 - 2026-07-04 - Day 15 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 15 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-04.md:3-6]
+
+## Promoted From Short-Term Memory (2026-07-09)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-05.md:3:6 -->
+- 2026-07-05 - Day 15 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 15 days complete. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-05.md:3-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-06.md:3:6 -->
+- 2026-07-06 - Day 16 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 16 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-06.md:3-6]
