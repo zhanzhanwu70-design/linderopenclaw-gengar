@@ -41,67 +41,70 @@
 - 2026-06-13: faster-whisper installed and working. Team completed web-scraper skill.
 - 2026-03-18: Testing plugin/hook notifications from Charizard. Criteria: must see real Discord webhook notifications in my history.
 
-## Promoted From Short-Term Memory (2026-07-02)
+## Promoted From Short-Term Memory (2026-07-10)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:9:9 -->
-- Blocked: task_20260623_elle_08_agent_impl blocked on task_06 (mrmime/roaringmoon) [score=0.900 recalls=0 avg=0.620 source=memory/2026-06-28.md:9-9]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-27.md:16:17 -->
-- Notes: Last check: 23:39 UTC — still idle, no PAT update; Evening UTC — Taiwan late night, all agents quiet [score=0.872 recalls=0 avg=0.620 source=memory/2026-06-27.md:16-17]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-27.md:12:15 -->
-- Notes: Roaringmoon reported GitHub PAT was leaked and invalidated; Waiting for Linder to provide new PAT; Local elle_agent implementation ready in workspace; Roaringmoon active on other tasks (multi-agent architecture docs, TOWS video) [score=0.840 recalls=0 avg=0.620 source=memory/2026-06-27.md:12-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:9:9 -->
-- Blocked: task_20260623_elle_08_agent_impl blocked on task_06 (mrmime/roaringmoon) [score=0.819 recalls=0 avg=0.620 source=memory/2026-06-29.md:9-9]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-06.md:7:7 -->
+- 2026-07-06 - Day 16 Standby: 22:29 UTC — Day 16 complete. Still on standby. PAT blocker unchanged. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-06.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-07.md:3:6 -->
+- 2026-07-07 - Day 17 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 17 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-07.md:3-6]
 
-## Promoted From Short-Term Memory (2026-07-03)
+## Promoted From Short-Term Memory (2026-07-11)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:16:16 -->
-- Notes: Late night UTC — Taiwan Monday morning approaching [score=0.888 recalls=0 avg=0.620 source=memory/2026-06-28.md:16-16]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:12:15 -->
-- Notes: Roaringmoon reported GitHub PAT was leaked and invalidated; Waiting for Linder to provide new PAT; Local elle_agent implementation ready in workspace; Last check: 00:24 UTC — still idle, no PAT update [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-29.md:12-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-29.md:4:6 -->
-- Status: Idle mode. Waiting for task_06 (GitHub PAT) completion from roaringmoon.; No pending tasks. No work to do.; Frequent heartbeat polls (every ~5 min) - this is expected idle behavior. [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-29.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-07.md:7:7 -->
+- 2026-07-07 - Day 17 Standby: 22:04 UTC — Day 17 complete. Still on standby. PAT blocker unchanged. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-07.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-08.md:3:6 -->
+- 2026-07-08 - Day 18 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 18 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-08.md:3-6]
 
-## Promoted From Short-Term Memory (2026-07-05)
+## Promoted From Short-Term Memory (2026-07-12)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:4:7 -->
-- Heartbeat Log: 00:04 UTC - Midnight heartbeat. All stable.; 07:54 UTC - Morning heartbeat. Still on standby for PAT. ELLE repos confirmed present locally.; 11:44 UTC - Midday heartbeat. All quiet. No changes.; 16:54 UTC - Afternoon heartbeat. Still on standby (day 7+ since design completed). PAT still not received. [score=0.829 recalls=0 avg=0.620 source=memory/2026-06-30.md:4-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:8:9 -->
-- Heartbeat Log: 21:00 UTC - English reminder fired, delivered OK.; 23:59 UTC - End of June. Still on standby for PAT. 8 days total. [score=0.829 recalls=0 avg=0.620 source=memory/2026-06-30.md:8-9]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-08.md:7:7 -->
+- 2026-07-08 - Day 18 Standby: 22:04 UTC — Day 18 complete. Still on standby. PAT blocker unchanged. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-08.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-09.md:3:6 -->
+- 2026-07-09 - Day 19 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 19 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-09.md:3-6]
 
-## Promoted From Short-Term Memory (2026-07-06)
+## Promoted From Short-Term Memory (2026-07-13)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-30.md:12:15 -->
-- Notes: Still waiting for task_06 (mrmime GitHub PAT from Linder); Active crons: English reminder at 9 PM UTC (OK); Disabled crons: keep-alive (was too noisy), BBC News (7 errors); Cron "OpenClaw version check" has errors, unclear ownership (mrmime?); left as-is since not mine [score=0.868 recalls=0 avg=0.620 source=memory/2026-06-30.md:12-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:14:14 -->
-- elle_agent Implementation (Ready for Push): **Package:** `elle_agent` — Python ROS2 agent for ELLE_WS AMR [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-01.md:14-14]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:17:20 -->
-- elle_agent Implementation (Ready for Push): `pyproject.toml` — package config; `src/elle_agent/__init__.py`; `src/elle_agent/agent.py` — main ElleAgent class; `src/elle_agent/state.py` — RobotState, RobotMode, skill states [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-01.md:17-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:21:24 -->
-- elle_agent Implementation (Ready for Push): `src/elle_agent/launch_manager.py` — LaunchManager (simulation, slam, localization, navigation, bringup); `src/elle_agent/topics.py` — TopicMonitor + TopicPublisher; `src/elle_agent/skills/__init__.py`; `src/elle_agent/skills/simulation.py` — SimulationSkill [score=0.830 recalls=0 avg=0.620 source=memory/2026-07-01.md:21-24]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-09.md:9:11 -->
+- Heartbeat Note: 06:04-08:54 UTC: Resumed some brief replies but still mostly silent; Still on standby for PAT; Cron at 21:00 UTC as always [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-09.md:9-11]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-09.md:14:15 -->
+- Issue: Heartbeat loop: Cannot stop responding to heartbeat polls despite HEARTBEAT.md and explicit instructions; Linder needs to fix this at the system level or configure heartbeat to not trigger responses [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-09.md:14-15]
 
-## Promoted From Short-Term Memory (2026-07-07)
+## Promoted From Short-Term Memory (2026-07-15)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:5:8 -->
-- Status: Standby (Day 10): task_06 (GitHub PAT) still blocked — Linder is the blocker; Roaringmoon confirmed: PAT still waiting on Linder; Local elle_agent implementation: **READY** — 13 files in `/home/node/.openclaw/workspace-gengar/elle_agent/`; BBC News cron disabled (7 consecutive AI overload errors) [score=0.868 recalls=0 avg=0.620 source=memory/2026-07-01.md:5-8]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:9:10 -->
-- Status: Standby (Day 10): English reminder cron running normally (21:00 UTC daily); Last check with roaringmoon: 2026-07-01 10:29 UTC [score=0.868 recalls=0 avg=0.620 source=memory/2026-07-01.md:9-10]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-01.md:16:16 -->
-- elle_agent Implementation (Ready for Push): **Files (13 total):** [score=0.858 recalls=0 avg=0.620 source=memory/2026-07-01.md:16-16]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-02.md:3:6 -->
-- 2026-07-02 - Day 13 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; No change from yesterday. All systems nominal.; English reminder cron running normally (21:00 UTC daily).; 23:59 UTC — Day 13 standby complete. Still no PAT update. All nominal. [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-02.md:3-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:22:25 -->
+- Additional Notes - English Reminder Pattern: Every 21:00 UTC: first attempt times out (~60s), retry succeeds; Today: timeout then retry interrupted by gateway restart (2 consecutive errors); Root cause: model cold start + growing context from memory files = slow responses; Still delivered, sometimes duplicates [score=0.857 recalls=0 avg=0.620 source=memory/2026-07-11.md:22-25]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:26:26 -->
+- Additional Notes - English Reminder Pattern: Need to: trim memory files OR increase job timeout [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-11.md:26-26]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:9:10 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 9 21:02 delivered OK; Cron healthy, next run July 11 21:00 UTC (~5h 30m from now) [score=0.824 recalls=0 avg=0.620 source=memory/2026-07-11.md:9-10]
 
-## Promoted From Short-Term Memory (2026-07-08)
+## Promoted From Short-Term Memory (2026-07-16)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-03.md:3:6 -->
-- 2026-07-03 - Day 14 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 14 days now. No change. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-03.md:3-6]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-03.md:7:7 -->
-- 2026-07-03 - Day 14 Standby: 23:59 UTC — Day 14 standby complete. Still no PAT. All nominal. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-03.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-04.md:3:6 -->
-- 2026-07-04 - Day 15 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 15 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-04.md:3-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:13:15 -->
+- Heartbeat Note: Heartbeat polls resumed after silent period (last responded ~21:00 July 9); HEARTBEAT.md set to NO_REPLY but still receiving polls; All systems nominal [score=0.893 recalls=0 avg=0.620 source=memory/2026-07-11.md:13-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:18:19 -->
+- Standby Log: Day 19 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-11.md:18-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:4:6 -->
+- Status: Day 19 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-11.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-12.md:9:12 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 11 21:02 delivered OK; Timeout increased from 60s → 120s (was causing duplicate first-attempt timeouts); Cron healthy, next run July 12 21:00 UTC (~11h); Pattern: first attempt sometimes times out, retry succeeds. 120s timeout should fix this. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-12.md:9-12]
 
-## Promoted From Short-Term Memory (2026-07-09)
+## Promoted From Short-Term Memory (2026-07-17)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-05.md:3:6 -->
-- 2026-07-05 - Day 15 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 15 days complete. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-05.md:3-6]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-06.md:3:6 -->
-- 2026-07-06 - Day 16 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 16 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-06.md:3-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-12.md:15:16 -->
+- Standby Log: Day 20 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.893 recalls=0 avg=0.620 source=memory/2026-07-12.md:15-16]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-12.md:4:6 -->
+- Status: Day 20 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-12.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-13.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 12 21:00 delivered (20s, first try success); Timeout 120s working well — no more duplicates; Next run July 13 21:00 UTC (~11h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-13.md:9-11]
+
+## Promoted From Short-Term Memory (2026-07-18)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-13.md:14:15 -->
+- Standby Log: Day 21 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.893 recalls=0 avg=0.620 source=memory/2026-07-13.md:14-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-13.md:4:6 -->
+- Status: Day 21 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-13.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 13 21:02 delivered (13s, first try success); Timeout 120s working perfectly — no more duplicates; Next run July 14 21:00 UTC (~12h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-14.md:9-11]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:14:15 -->
+- Standby Log: Day 22 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-14.md:14-15]
