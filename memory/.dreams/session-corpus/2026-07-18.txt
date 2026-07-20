@@ -3,3 +3,32 @@
 [gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L331] User: help me to store this in llm wiki
 [gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L346] Assistant: Got it. Let me store this — raw first, then wiki page:
 [gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L352] Assistant: Done. ✅ **Saved two places:** 1. **Raw** → `raw/documents/2026-07-18-programmers-and-stars.md` — preserves the exact words 2. **Wiki** → `wiki/synthesis/programmers-and-stars.md` — with analysis, themes, and related questions Logged in `wiki/log.md`. --- *"We 
+[gengar/sessions/gengar/7297236c-e02c-4532-9ebe-1a9789687153.jsonl#L22] Assistant: Good morning, Linder. Here's your BBC news drill. **Two US troops killed and one missing after Iranian attack in Jordan** Two US service members were killed and one remains missing after Iranian ballistic missile and drone attacks in Jordan on Friday. This mark
+[gengar/sessions/gengar/7297236c-e02c-4532-9ebe-1a9789687153.jsonl#L22] Assistant: East region? 3. If you were a diplomat, what would you suggest to prevent further escalation in this conflict? --- 🎧 **Audio delivered above.** --- 🐱 *Drop and give me twenty words, Linder! Pick one question and answer in English — no mistakes!*
+[gengar/sessions/gengar/803a8bac-6f8e-4db0-94bf-3c59eaa03cf5.jsonl#L8] Assistant: Hey Linder! 👋 Time for English practice tonight! Send me a voice message and I'll help you correct it. 🎯
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17104] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17106] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17108] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17110] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17112] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17114] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17116] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17119] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17121] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17123] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17125] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17127] Assistant: [No reply]
+[gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L353] Assistant: Good morning, Linder. Here's your BBC news drill. **Two US troops killed and one missing after Iranian attack in Jordan** Two US service members were killed and one remains missing after Iranian ballistic missile and drone attacks in Jordan on Friday. This mar
+[gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L353] Assistant: East region? 3. If you were a diplomat, what would you suggest to prevent further escalation in this conflict? --- 🎧 **Audio delivered above.** --- 🐱 *Drop and give me twenty words, Linder! Pick one question and answer in English — no mistakes!*
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17129] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17131] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17133] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17135] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17137] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17139] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17141] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17143] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17145] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17147] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17149] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17151] Assistant: [No reply]

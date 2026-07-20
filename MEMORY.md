@@ -108,3 +108,8 @@
 - Cron Status: English reminder: daily 21:00 UTC, last run July 13 21:02 delivered (13s, first try success); Timeout 120s working perfectly — no more duplicates; Next run July 14 21:00 UTC (~12h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-14.md:9-11]
 <!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:14:15 -->
 - Standby Log: Day 22 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-14.md:14-15]
+
+## Promoted From Short-Term Memory (2026-07-20)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:4:6 -->
+- Status: Day 22 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.900 recalls=0 avg=0.620 source=memory/2026-07-14.md:4-6]
