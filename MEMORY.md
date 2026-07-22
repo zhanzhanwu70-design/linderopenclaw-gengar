@@ -41,13 +41,6 @@
 - 2026-06-13: faster-whisper installed and working. Team completed web-scraper skill.
 - 2026-03-18: Testing plugin/hook notifications from Charizard. Criteria: must see real Discord webhook notifications in my history.
 
-## Promoted From Short-Term Memory (2026-07-10)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-07-06.md:7:7 -->
-- 2026-07-06 - Day 16 Standby: 22:29 UTC — Day 16 complete. Still on standby. PAT blocker unchanged. [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-06.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-07.md:3:6 -->
-- 2026-07-07 - Day 17 Standby: Status: Still on standby. task_06 (GitHub PAT) blocked upstream - Linder has it.; 17 days now. PAT still the blocker.; English reminder cron running normally (21:00 UTC daily, delivered OK).; All systems nominal. [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-07.md:3-6]
-
 ## Promoted From Short-Term Memory (2026-07-11)
 
 <!-- openclaw-memory-promotion:memory:memory/2026-07-07.md:7:7 -->
@@ -113,3 +106,12 @@
 
 <!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:4:6 -->
 - Status: Day 22 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.900 recalls=0 avg=0.620 source=memory/2026-07-14.md:4-6]
+
+## Promoted From Short-Term Memory (2026-07-22)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:14:15 -->
+- Standby Log: Day 24 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.857 recalls=0 avg=0.620 source=memory/2026-07-16.md:14-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 15 21:02 delivered (17s, first try); Timeout 120s working consistently; Next run July 16 21:00 UTC (~11h) [score=0.857 recalls=0 avg=0.620 source=memory/2026-07-16.md:9-11]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:4:6 -->
+- Status: Day 24 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.838 recalls=0 avg=0.620 source=memory/2026-07-16.md:4-6]

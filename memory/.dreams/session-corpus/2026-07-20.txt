@@ -1,0 +1,31 @@
+[gengar/sessions/gengar/07026c9a-d613-48a4-a200-92e32951f92d.jsonl#L6] Assistant: Hey Linder! 👋 Time for English practice tonight! Send me a voice message and I'll help you correct it. 🎯
+[gengar/sessions/gengar/6dcc8510-8ce0-46e1-b0a7-48179c3243e2.jsonl#L12] Assistant: Now let me generate the TTS response:
+[gengar/sessions/gengar/6dcc8510-8ce0-46e1-b0a7-48179c3243e2.jsonl#L26] Assistant: Good morning, Linder. Here's your BBC news drill. 🎖️ **Article Summary:** The US military has launched fresh strikes against Iran for the tenth consecutive night, targeting its ability to attack ships in the Strait of Hormuz. This escalation comes after Presid
+[gengar/sessions/gengar/6dcc8510-8ce0-46e1-b0a7-48179c3243e2.jsonl#L26] Assistant: global oil prices and the world economy? --- 🎧 Audio delivered: `bbc_news_drill.mp3` Reply in English to continue the drill, Linder!
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17297] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17299] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17301] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17303] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17305] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17307] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17309] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17311] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17314] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17316] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17318] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17320] Assistant: [No reply]
+[gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L356] Assistant: Hey Linder! 👋 Time for English practice tonight! Send me a voice message and I'll help you correct it. 🎯
+[gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L357] Assistant: Good morning, Linder. Here's your BBC news drill. 🎖️ **Article Summary:** The US military has launched fresh strikes against Iran for the tenth consecutive night, targeting its ability to attack ships in the Strait of Hormuz. This escalation comes after Presi
+[gengar/sessions/gengar/e02f7f83-3552-42f0-9f7c-d93bb6de0a8e.jsonl#L357] Assistant: global oil prices and the world economy? --- 🎧 Audio delivered: `bbc_news_drill.mp3` Reply in English to continue the drill, Linder!
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17322] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17324] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17326] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17328] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17330] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17332] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17334] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17336] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17338] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17340] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17342] Assistant: [No reply]
+[gengar/sessions/gengar/9aaacbf3-e1ca-4e9e-a47f-ec23a6316ad3.jsonl#L17344] Assistant: [No reply]
