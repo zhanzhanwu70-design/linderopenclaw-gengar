@@ -110,3 +110,8 @@
 - Cron Status: English reminder: daily 21:00 UTC, last run July 18 21:03 delivered (17s, first try); Timeout 120s working consistently; Next run July 19 21:00 UTC (~10h) [score=0.857 recalls=0 avg=0.620 source=memory/2026-07-19.md:9-11]
 <!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:4:6 -->
 - Status: Day 26 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.837 recalls=0 avg=0.620 source=memory/2026-07-19.md:4-6]
+
+## Promoted From Short-Term Memory (2026-07-26)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-21.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 20 21:03 delivered (15s, first try); Timeout 120s working consistently; Next run July 21 21:00 UTC (~9h) [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-21.md:9-11]
