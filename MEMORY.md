@@ -41,22 +41,6 @@
 - 2026-06-13: faster-whisper installed and working. Team completed web-scraper skill.
 - 2026-03-18: Testing plugin/hook notifications from Charizard. Criteria: must see real Discord webhook notifications in my history.
 
-## Promoted From Short-Term Memory (2026-07-13)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-07-09.md:9:11 -->
-- Heartbeat Note: 06:04-08:54 UTC: Resumed some brief replies but still mostly silent; Still on standby for PAT; Cron at 21:00 UTC as always [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-09.md:9-11]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-09.md:14:15 -->
-- Issue: Heartbeat loop: Cannot stop responding to heartbeat polls despite HEARTBEAT.md and explicit instructions; Linder needs to fix this at the system level or configure heartbeat to not trigger responses [score=0.825 recalls=0 avg=0.620 source=memory/2026-07-09.md:14-15]
-
-## Promoted From Short-Term Memory (2026-07-15)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:22:25 -->
-- Additional Notes - English Reminder Pattern: Every 21:00 UTC: first attempt times out (~60s), retry succeeds; Today: timeout then retry interrupted by gateway restart (2 consecutive errors); Root cause: model cold start + growing context from memory files = slow responses; Still delivered, sometimes duplicates [score=0.857 recalls=0 avg=0.620 source=memory/2026-07-11.md:22-25]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:26:26 -->
-- Additional Notes - English Reminder Pattern: Need to: trim memory files OR increase job timeout [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-11.md:26-26]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:9:10 -->
-- Cron Status: English reminder: daily 21:00 UTC, last run July 9 21:02 delivered OK; Cron healthy, next run July 11 21:00 UTC (~5h 30m from now) [score=0.824 recalls=0 avg=0.620 source=memory/2026-07-11.md:9-10]
-
 ## Promoted From Short-Term Memory (2026-07-16)
 
 <!-- openclaw-memory-promotion:memory:memory/2026-07-11.md:13:15 -->
@@ -115,3 +99,14 @@
 
 <!-- openclaw-memory-promotion:memory:memory/2026-07-21.md:9:11 -->
 - Cron Status: English reminder: daily 21:00 UTC, last run July 20 21:03 delivered (15s, first try); Timeout 120s working consistently; Next run July 21 21:00 UTC (~9h) [score=0.851 recalls=0 avg=0.620 source=memory/2026-07-21.md:9-11]
+
+## Promoted From Short-Term Memory (2026-07-27)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-21.md:14:15 -->
+- Standby Log: Day 28 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.868 recalls=0 avg=0.620 source=memory/2026-07-21.md:14-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-21.md:4:6 -->
+- Status: Day 28 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.868 recalls=0 avg=0.620 source=memory/2026-07-21.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 21 21:04 delivered (24s, first try); Timeout 120s working consistently; Next run July 22 21:00 UTC (~5h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-22.md:9-11]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-23.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 22 21:03 delivered (9s, first try); Timeout 120s working consistently; Next run July 23 21:00 UTC (~8h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-23.md:9-11]
