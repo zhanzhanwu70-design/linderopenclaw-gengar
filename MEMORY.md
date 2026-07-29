@@ -41,15 +41,6 @@
 - 2026-06-13: faster-whisper installed and working. Team completed web-scraper skill.
 - 2026-03-18: Testing plugin/hook notifications from Charizard. Criteria: must see real Discord webhook notifications in my history.
 
-## Promoted From Short-Term Memory (2026-07-17)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-07-12.md:15:16 -->
-- Standby Log: Day 20 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.893 recalls=0 avg=0.620 source=memory/2026-07-12.md:15-16]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-12.md:4:6 -->
-- Status: Day 20 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-12.md:4-6]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-13.md:9:11 -->
-- Cron Status: English reminder: daily 21:00 UTC, last run July 12 21:00 delivered (20s, first try success); Timeout 120s working well — no more duplicates; Next run July 13 21:00 UTC (~11h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-13.md:9-11]
-
 ## Promoted From Short-Term Memory (2026-07-18)
 
 <!-- openclaw-memory-promotion:memory:memory/2026-07-13.md:14:15 -->
@@ -112,3 +103,12 @@
 - Status: Day 30 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-23.md:4-6]
 <!-- openclaw-memory-promotion:memory:memory/2026-07-24.md:9:11 -->
 - Cron Status: English reminder: daily 21:00 UTC, last run July 23 21:03 delivered (9s, first try); Timeout 120s working consistently; Next run July 24 21:00 UTC (~11h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-24.md:9-11]
+
+## Promoted From Short-Term Memory (2026-07-29)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-24.md:14:15 -->
+- Standby Log: Day 31 of standby. No updates from roaringmoon/mrmime.; elle_agent implementation: 13 files, ready to push when PAT arrives [score=0.893 recalls=0 avg=0.620 source=memory/2026-07-24.md:14-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-24.md:4:6 -->
+- Status: Day 31 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-24.md:4-6]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-25.md:9:11 -->
+- Cron Status: English reminder: daily 21:00 UTC, last run July 24 21:00 delivered (7s, first try); Timeout 120s working consistently; Next run July 25 21:00 UTC (~16h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-25.md:9-11]
