@@ -26,8 +26,8 @@
 
 ## Projects
 - **ELLE_AMR** (Axiomtek ROS2 workspace) - see elle_builder_package_engineer skill
-  - Design doc: `/home/node/.openclaw/workspace/llm-wiki/raw/code/elle_agent_design.md`
-  - Local implementation ready: `/home/node/.openclaw/workspace/llm-wiki/raw/code/elle_ws/`
+  - Design doc: `/home/amr/llm-wiki/raw/code/elle_agent_design.md`
+  - Local implementation ready: `/home/amr/llm-wiki/raw/code/elle_ws/`
   - Task_08 (agent impl) in progress — blocked by task_06 (GitHub PAT)
 - **web-scraper** - Completed with team (Charizard research, Gengar docs, Celesteela examples)
 
