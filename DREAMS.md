@@ -1263,6 +1263,7 @@ Tomorrow the clock will pulse again at 21:00. I will be here.
 
 ## Deep Sleep
 <!-- openclaw:dreaming:deep:start -->
-- Ranked 3 candidate(s) for durable promotion.
-- Promoted 3 candidate(s) into MEMORY.md.
+- Repaired recall artifacts: rewrote recall store.
+- Ranked 0 candidate(s) for durable promotion.
+- Promoted 0 candidate(s) into MEMORY.md.
 <!-- openclaw:dreaming:deep:end -->
