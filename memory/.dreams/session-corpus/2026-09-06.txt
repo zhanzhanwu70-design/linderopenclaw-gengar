@@ -1,0 +1,1 @@
+[gengar/sessions/gengar/81c584ba-94f6-470e-afbe-a9bed4757d9a#L12] Assistant: ## 🔔 OpenClaw 版本檢查結果 **有新版本可用！** | 項目 | 版本 | |------|------| | 目前已安裝版本 | `2026.8.2` | | npm 最新版本 | `2026.9.1` | | 更新狀態 | ⚠️ **落後 1 個版本** | ### 建議 建議在方便時執行升級： ```bash npm install -g openclaw@latest ``` 或在 OpenClaw 內透過 `openclaw` 系統指令處理（升級涉及 Gateway 重啟，需要人工確認）。 ### 檢查
