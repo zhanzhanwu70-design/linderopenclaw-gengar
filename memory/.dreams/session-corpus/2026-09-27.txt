@@ -1,0 +1,1 @@
+[gengar/sessions/gengar/81c584ba-94f6-470e-afbe-a9bed4757d9a#L14] Assistant: ]<]minimax[>[<tool_call> ]<]minimax[>[<invoke name="exec">]<]minimax[>[<command>npm view openclaw version 2>&1]<]minimax[>[</command>]<]minimax[>[</invoke> ]<]minimax[>[<invoke name="exec">]<]minimax[>[<command>npm view openclaw versions --json 2>&1 | tail -30]<]mini
