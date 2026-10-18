@@ -1,0 +1,1 @@
+[gengar/sessions/gengar/81c584ba-94f6-470e-afbe-a9bed4757d9a#L15] Assistant: 🐾 **OpenClaw 版本檢查報告** 📅 2026-10-18 00:04 (Asia/Taipei) | 項目 | 版本 | |---|---| | 目前安裝 | **2026.8.2** (build 0965053) | | 最新版本 (npm) | **2026.10.4** | | 更新狀態 | ⚠️ 有新版本可用 | **結論**：有新版本可升級（2026.8.2 → 2026.10.4）。 升級方式：`npm update -g openclaw` 或透過 `openclaw` 的更新流程（OpenCla
