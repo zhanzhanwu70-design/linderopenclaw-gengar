@@ -11,6 +11,14 @@
 - **STT**: faster-whisper (local, installed 2026-06-13)
   - No more OpenAI Whisper API — local inference, no quota limits
   - Can run tiny or base model on CPU
+- **Edge-TTS 403 recovery (2026-10-25)**: Microsoft rotated the Edge TTS
+  endpoint. Symptom: `WSServerHandshakeError: 403` / "Unexpected server
+  response: 403" at the websocket handshake.
+  - Python CLI: `pip install --user --upgrade edge-tts` (7.3.1+ works; it sends
+    `Sec-MS-GEC-Version=2-…`). 7.2.8 fails.
+  - Node: `npm install node-edge-tts@1.2.11` in the skill's `scripts/` dir
+    (new endpoint `api.msedgeservices.com`). 1.2.10 fails.
+  - Node API is `ttsPromise(text, audioPath)` — there is no `ttsToFile()`.
 
 ## English Coach Mode
 - Linder activates this for English practice
@@ -18,6 +26,24 @@
 - Correct mistakes immediately with 🛑/⚠️
 - Voice output via Edge-TTS
 - See SOUL.md for Drill Sergeant Lobster & The Riddler Lobster modes
+
+## Cron Health (lessons from the Sep-Oct 2026 outage)
+
+- **Never trust `enabled: true` as proof a cron works.** Always verify
+  `state.lastRunStatus`, `state.lastDeliveryStatus`, `state.consecutiveErrors`,
+  and `state.lastRunAtMs`. A job can look healthy while being dead for weeks.
+- OpenClaw auto-disables a recurring job after **10 consecutive failures**
+  (`state.autoDisabled.reason: consecutive-failures`). A provider outage then
+  kills a daily cron silently. Re-enable with `openclaw automations enable <id>`,
+  which also clears the failure streak.
+- **Isolated cron sessions load the full workspace bootstrap** — a one-line
+  reminder was burning 74K input tokens. Use `--light-context` for cron jobs.
+- **Clearing a job's `sessionKey` breaks Discord target resolution.** If you
+  clear it, also set `--to channel:<id>` explicitly, or the run fails with
+  "Discord recipient is required."
+- Gengar's crons: English reminder `ac9e7ada-134e-4b83-8161-6ec18ca312b9`
+  (daily 21:00 UTC), BBC News drill `88810bfe-4ecc-4a99-99e6-541ba5d2cc1e`
+  (daily 07:00 Asia/Taipei).
 
 ## Skills I've Built/Modified
 - **banini** - 反指標追蹤器 (Facebook scrape + AI + Telegram)

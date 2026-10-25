@@ -1,0 +1,1 @@
+[gengar/sessions/gengar/81c584ba-94f6-470e-afbe-a9bed4757d9a#L16] Assistant: 🐱 **OpenClaw 版本檢查** - 目前安裝版本：**2026.8.2** (0965053) - npm 最新版本：**2026.10.7** - 結果：**有新版本可用** ✅ 落後約兩個版本週期（8月 → 10月）。升級指令： ``` npm install -g openclaw@latest ``` 需要我下次排程時自動執行升級嗎？（升級會重啟 Gateway，所以我沒有自行執行。）
