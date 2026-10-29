@@ -136,3 +136,27 @@
 - Status: Day 32 since ELLE_WS design completed (2026-06-23); Still on standby for task_06 (GitHub PAT) — Linder is the blocker; No change from previous days [score=0.861 recalls=0 avg=0.620 source=memory/2026-07-25.md:4-6]
 <!-- openclaw-memory-promotion:memory:memory/2026-07-26.md:9:11 -->
 - Cron Status: English reminder: daily 21:00 UTC, last run July 25 21:00 delivered (29s, first try); Timeout 120s working consistently; Next run July 26 21:00 UTC (~14h) [score=0.844 recalls=0 avg=0.620 source=memory/2026-07-26.md:9-11]
+
+## Host Network Facts (learned 2026-10-29)
+
+- **The wired NIC `enp43s0` ("Wired connection 1", 192.168.50.x) is LAN-only —
+  no default route, no internet.** It is *not* a backup uplink.
+  The only internet path is Wi-Fi `hinet-141` (wlp0s20f3, 192.168.1.x).
+- Wi-Fi drops 1–3×/day (21 carrier losses Oct 22–29), often 02:00–06:00.
+  Each drop = total internet loss on this box for minutes.
+- **Cron symptom to recognize:** `LLM request failed: DNS lookup for the provider
+  endpoint failed` or `network connection error` in an OpenClaw automation run
+  usually means **local uplink loss**, not a provider outage. Verify with
+  `journalctl --since "<window>" | grep -E 'Lost carrier|ssid-not-found|network is unreachable'`
+  before blaming MiniMax/OpenAI. Provider DNS+HTTP can be healthy at the same time.
+- Recovery path that works: `openclaw automations run <id> --wait` (re-runs the
+  job and clears `consecutiveErrors`), then confirm
+  `openclaw automations get <id>` → `lastRunStatus: ok`.
+- `openclaw memory status` without `--agent` inspects **flaaffy**; always pass
+  `--agent gengar`. If vector search is paused with
+  "index provenance classifier changed" / index built for `fts-only`, rebuild with
+  `openclaw memory status --index --agent gengar` (local GGUF embedding model).
+- Memory vector search fix path (2026-10-29): the llama-cpp provider plugin is
+  installed but the in-process runtime is retired → `openclaw update repair`
+  (installs the managed llama-server provider) **plus a Gateway restart** is
+  required. Left to Linder because it restarts the shared Gateway.
