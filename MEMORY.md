@@ -160,3 +160,23 @@
   installed but the in-process runtime is retired → `openclaw update repair`
   (installs the managed llama-server provider) **plus a Gateway restart** is
   required. Left to Linder because it restarts the shared Gateway.
+
+## Automation Delivery & Exit-Code Semantics (learned 2026-10-30)
+
+- **A command-payload automation that exits non-zero is recorded as an ERROR**
+  and feeds the consecutive-error counter → auto-disable after 10 runs.
+  Watchdogs/health checks must **always exit 0**: report problems in stdout
+  (`NO_REPLY` for "nothing to say"). Exiting 1 "to raise an alarm" makes the
+  watchdog kill itself — exactly how `Gengar Cron Health Watchdog`
+  (`29c2d630-7576-4da3-baae-5245177e5bcf`) auto-disabled on 2026-10-30.
+- **Benign delivery pattern:** `deliveryStatus: "not-delivered"` +
+  `deliverySuppressionReason: "silent"` + non-empty `delivery.messageToolSentTo`
+  = the cron agent posted straight to the channel with the `message` tool and
+  returned no final text. The message IS delivered; do not alert on it.
+- Diagnosis shortcuts: `openclaw automations get <id>` → `state.lastDiagnostics`,
+  `state.consecutiveErrors`, `state.autoDisabled.reason`;
+  `openclaw automations runs --id <id> --limit N` → per-run status, delivery,
+  suppression reason, messageToolSentTo;
+  `openclaw automations enable <id>` clears the streak and the autoDisabled flag.
+- Watchdog script: `/home/amr/.openclaw/workspace-gengar/scripts/check_gengar_crons.sh`
+  (guards the English reminder + BBC News drill). <!-- project: github.com/zhanzhanwu70-design/linderopenclaw-gengar -->

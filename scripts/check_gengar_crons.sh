@@ -1,85 +1,106 @@
 #!/usr/bin/env bash
 # Watchdog for Gengar's own automations.
-# Prints a short alert only when something is wrong; prints NO_REPLY when healthy.
-# Exit 0 = healthy (silent), exit 1 = problem (message delivered).
+#
+# IMPORTANT CONTRACT WITH OPENCLAW
+# ---------------------------------
+# A non-zero exit code marks an automation run as an ERROR. Errors feed the
+# consecutive-error counter, and OpenClaw auto-disables a job after 10
+# consecutive failures. So a watchdog must NEVER exit non-zero just because it
+# detected a problem — it reports the problem in stdout and always exits 0.
+#
+#   2026-10-29: this script exited 1 on every alert, so the job counted 10
+#   "failed" runs and OpenClaw auto-disabled it (reason: consecutive-failures).
+#
+# Healthy -> prints NO_REPLY (OpenClaw suppresses the delivery).
+# Problem -> prints an alert (OpenClaw announces it) and exits 0.
+#
+# Delivery nuance: when the cron agent posts with the `message` tool and returns
+# no final text, OpenClaw records deliveryStatus "not-delivered" with
+# deliverySuppressionReason "silent". The message IS in the channel — that is
+# not a delivery failure and must not raise an alert.
 
 set -uo pipefail
 
-JOBS=(
-  "ac9e7ada-134e-4b83-8161-6ec18ca312b9|English reminder"
-  "88810bfe-4ecc-4a99-99e6-541ba5d2cc1e|BBC News drill"
-)
+exec python3 - <<'PY'
+import json
+import subprocess
 
-PROBLEMS=()
+JOBS = [
+    ("ac9e7ada-134e-4b83-8161-6ec18ca312b9", "English reminder"),
+    ("88810bfe-4ecc-4a99-99e6-541ba5d2cc1e", "BBC News drill"),
+]
 
-for entry in "${JOBS[@]}"; do
-  id="${entry%%|*}"
-  name="${entry##*|}"
 
-  raw="$(openclaw automations get "$id" 2>/dev/null)" || {
-    PROBLEMS+=("$name: could not read job state (id $id)")
-    continue
-  }
+def run_json(args):
+    """Return (parsed_json, error_message)."""
+    try:
+        proc = subprocess.run(args, capture_output=True, text=True, timeout=90)
+    except Exception as exc:  # noqa: BLE001
+        return None, f"exec failed: {exc}"
+    if proc.returncode != 0:
+        return None, (proc.stderr or proc.stdout or "command failed").strip()[:160]
+    try:
+        return json.loads(proc.stdout), None
+    except Exception as exc:  # noqa: BLE001
+        return None, f"unparseable json: {exc}"
 
-  state="$(printf '%s' "$raw" | python3 -c '
-import json,sys
-try:
-    d=json.load(sys.stdin)
-except Exception:
-    print("PARSE_ERROR"); raise SystemExit
-s=d.get("state") or {}
-print("|".join([
-    "enabled="+str(d.get("enabled")),
-    "status="+str(s.get("lastRunStatus")),
-    "delivery="+str(s.get("lastDeliveryStatus")),
-    "errors="+str(s.get("consecutiveErrors")),
-    "autoDisabled="+str((s.get("autoDisabled") or {}).get("reason","none")),
-    "lastRunAtMs="+str(s.get("lastRunAtMs")),
-    "lastError="+((s.get("lastError") or "none")[:120]),
-]))
-' 2>/dev/null)" || state=""
 
-  if [[ "$state" == "PARSE_ERROR" || -z "$state" ]]; then
-    PROBLEMS+=("$name: unparseable state")
-    continue
-  fi
+def last_run(job_id):
+    data, _err = run_json(["openclaw", "automations", "runs", "--id", job_id, "--limit", "1"])
+    entries = (data or {}).get("entries") or []
+    return entries[0] if entries else {}
 
-  get_field() { printf '%s' "$state" | cut -d'|' -f"$1"; }
 
-  f1="$(get_field 1)"; f2="$(get_field 2)"; f3="$(get_field 3)"
-  f4="$(get_field 4)"; f5="$(get_field 5)"; f7="$(get_field 7)"
+problems = []
 
-  enabled="${f1#enabled=}"
-  status="${f2#status=}"
-  delivery="${f3#delivery=}"
-  errors="${f4#errors=}"
-  autoDisabled="${f5#autoDisabled=}"
-  last_error="${f7#lastError=}"
+for job_id, name in JOBS:
+    job, err = run_json(["openclaw", "automations", "get", job_id])
+    if job is None:
+        problems.append(f"{name}: could not read job state ({err})")
+        continue
 
-  if [[ "$enabled" != "True" ]]; then
-    PROBLEMS+=("$name: DISABLED (reason=${autoDisabled}, consecutiveErrors=${errors})")
-  fi
-  if [[ "$errors" != "0" && "$errors" != "None" ]]; then
-    PROBLEMS+=("$name: ${errors} consecutive failures (lastStatus=${status}, delivery=${delivery})")
-  fi
-  if [[ "$status" == "error" ]]; then
-    PROBLEMS+=("$name: last run failed — ${last_error}")
-  fi
-  if [[ "$delivery" == "not-delivered" && "$status" == "ok" ]]; then
-    PROBLEMS+=("$name: run ok but delivery not-delivered")
-  fi
-done
+    state = job.get("state") or {}
+    enabled = job.get("enabled")
+    status = state.get("lastRunStatus")
+    delivery = state.get("lastDeliveryStatus")
+    errors = state.get("consecutiveErrors")
+    auto_disabled = (state.get("autoDisabled") or {}).get("reason", "none")
+    last_error = (state.get("lastError") or "none")[:160]
 
-if [[ ${#PROBLEMS[@]} -eq 0 ]]; then
-  echo "NO_REPLY"
-  exit 0
-fi
+    if not enabled:
+        problems.append(
+            f"{name}: DISABLED (reason={auto_disabled}, consecutiveErrors={errors})"
+        )
+    if errors not in (0, None):
+        problems.append(
+            f"{name}: {errors} consecutive failures "
+            f"(lastStatus={status}, delivery={delivery})"
+        )
+    if status == "error":
+        problems.append(f"{name}: last run failed — {last_error}")
 
-echo "⚠️ Gengar automation health check"
-for p in "${PROBLEMS[@]}"; do
-  echo "• $p"
-done
-echo ""
-echo "Inspect: openclaw automations list --all"
-echo "Recover: openclaw automations enable <jobId>"
-exit 1
+    if delivery == "not-delivered":
+        entry = last_run(job_id)
+        suppression = entry.get("deliverySuppressionReason")
+        agent_posted = bool((entry.get("delivery") or {}).get("messageToolSentTo"))
+        # Benign case: the agent posted straight to the channel with the message
+        # tool and returned no final text, so announce had nothing left to send.
+        benign = suppression == "silent" and agent_posted
+        if not benign:
+            problems.append(
+                f"{name}: delivery not-delivered "
+                f"(suppression={suppression}, agentPosted={agent_posted})"
+            )
+
+if not problems:
+    print("NO_REPLY")
+    raise SystemExit(0)
+
+print("⚠️ Gengar automation health check")
+for item in problems:
+    print(f"• {item}")
+print("")
+print("Inspect: openclaw automations list --all")
+print("Recover: openclaw automations enable <jobId>")
+raise SystemExit(0)
+PY
