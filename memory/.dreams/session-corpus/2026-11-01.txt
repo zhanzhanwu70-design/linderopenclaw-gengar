@@ -1,0 +1,1 @@
+[gengar/sessions/gengar/81c584ba-94f6-470e-afbe-a9bed4757d9a#L17] Assistant: 🐱 **OpenClaw 版本檢查報告** (2026-11-01 00:02) **有新版本。** • 已安裝：**2026.8.2** • 最新正式版：**2026.10.9**（2026-10-29 發佈） • extended-stable：**2026.9.36** ／ beta：**2026.10.10-beta.5** 落後約兩個月（跨 9、10 兩個月的版本線）。 **2026.10.9 重點** • 安全修補：fast-uri 4.2.3、nodemailer 10.1.4、MSAL Node 7.1.1 •

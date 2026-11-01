@@ -3,7 +3,10 @@
     "pool": "2026-06-28T21:57:00Z",
     "demands": "2026-06-28T21:57:00Z",
     "tasks": "2026-06-28T21:57:00Z",
-    "memory": "2026-06-28T21:57:00Z"
+    "memory": "2026-11-01T00:05:00Z"
   },
-  "lastHeartbeat": "2026-06-29T04:52:00Z"
+  "lastHeartbeat": "2026-11-01T00:05:00Z",
+  "notes": {
+    "2026-11-01T00:05:00Z": "Overnight sweep: gengar crons healthy (watchdog fix held). Found elle.service crash loop since Sep 9, pending OpenClaw upgrade, rowlet cron a72cb46b flaky (rate limit + Oct 31 gateway restart from critical memory pressure). Deferred a heads-up to 09:00 via one-shot automation 'Overnight health notes'."
+  }
 }

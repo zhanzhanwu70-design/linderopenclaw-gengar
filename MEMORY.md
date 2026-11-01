@@ -180,3 +180,47 @@
   `openclaw automations enable <id>` clears the streak and the autoDisabled flag.
 - Watchdog script: `/home/amr/.openclaw/workspace-gengar/scripts/check_gengar_crons.sh`
   (guards the English reminder + BBC News drill). <!-- project: github.com/zhanzhanwu70-design/linderopenclaw-gengar -->
+
+## Host / Gateway Health Facts (learned 2026-11-01)
+
+- **`elle.service` has been crash-looping since 2026-09-09** (~58k restarts, every
+  30 s): `/etc/elle.sh` sources
+  `/home/amr/elle_builder_package/exec/simulation.sh`, and that path no longer
+  exists anywhere under `/home/amr`. Cheap (192 KB RSS) but pure noise; fixing it
+  needs root (no passwordless sudo for this agent) plus an ELLE-project decision:
+  `sudo systemctl disable --now elle` or repoint the script. Reported to Linder
+  2026-11-01 09:00.
+- **A Gateway restart kills in-flight cron runs.** On 2026-10-31 10:06 the old
+  gateway (pid 1245) was at critical memory pressure
+  (`rss=3.51–3.56 GiB`, threshold 3.14 GiB), took SIGTERM, and drained with
+  `1 active cron run(s)` — rowlet's research cron died as
+  `cron: job interrupted by gateway restart`. When a cron fails unexpectedly,
+  check the Gateway journal for a restart before blaming the model/provider.
+  New gateway (pid 2113503) has been healthy at ~1.0 GiB RSS.
+- **Long agent-turn crons without `lightContext` burn the full bootstrap per
+  isolated run** (74K tokens on my own crons) and therefore hit shared MiniMax
+  rate limits: rowlet's `a72cb46b` failed with "⚠️ API rate limit reached" and a
+  1200 s model-call timeout on 2026-10-30/31. `lightContext` is the proven lever.
+- Quiet-hours rule (AGENTS.md): 23:00–08:00 → don't ping; schedule the heads-up
+  as a **one-shot automation** instead (`openclaw automations add --at <ISO>
+  --tz Asia/Taipei --delete-after-run --announce --to channel:<id>`).
+
+## Host / Provider Facts (updated 2026-11-01)
+
+- **`elle.service` crash-loops forever** (`/etc/systemd/system/elle.service`):
+  `/etc/elle.sh` sources `/home/amr/elle_builder_package/exec/simulation.sh`, but that tree
+  no longer exists → the unit fails every ~30 s (`NRestarts` 57k+, ~352 k journal lines
+  in 30 days). Needs root: `sudo systemctl disable --now elle.service`
+  (no passwordless sudo on this box). Root-free workaround: no-op
+  `exec/simulation.sh` so the unit exits 0.
+- **MiniMax intermittently returns HTTP 429** `{"type":"overloaded_error","message":
+  "server is busy, please retry later"}` (15× in 24 h on 2026-11-01, some hitting
+  gengar's own runs). Both `minimax` and `minimax-portal` point at
+  `https://api.minimax.io`, so configured fallbacks do **not** protect against it —
+  a cross-host fallback (e.g. an OpenAI model) is the only real insurance.
+- **The gateway can exceed its own RSS threshold (3.14 GiB)** and gets restarted
+  (206 memory-pressure warnings in 24 h on 2026-10-31). A restart interrupts
+  running cron jobs → runs recorded as `cron: job interrupted by gateway restart`.
+  Watch for that error string before blaming a job's payload.
+- Gengar's automations (watchdog `29c2d630`, English reminder `ac9e7ada`,
+  BBC drill `88810bfe`) were all healthy as of 2026-11-01 01:30.
