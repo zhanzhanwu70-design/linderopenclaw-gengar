@@ -224,3 +224,15 @@
   Watch for that error string before blaming a job's payload.
 - Gengar's automations (watchdog `29c2d630`, English reminder `ac9e7ada`,
   BBC drill `88810bfe`) were all healthy as of 2026-11-01 01:30.
+- **MiniMax rate-limit hardening (2026-11-07, fleet-wide):** `minimax-portal` and `minimax`
+  (API key) are separate quota pools on the same host, so a portal 429 wave kills every job
+  pinned to the portal credential. Applied: `agents.defaults.model.fallbacks =
+  ["minimax/MiniMax-M3"]` (primary stays minimax-portal/MiniMax-M3) and every agentTurn job
+  pinned to `minimax-portal/*` now lists `minimax/MiniMax-M3` first in `payload.fallbacks`
+  (29 jobs scanned → 0 exposed). Config backup:
+  `~/.openclaw/openclaw.json.bak-gengar-20261107`.
+- `channels.discord.accounts.default` still has **no token** (only groupPolicy/streaming).
+  It caused 47 `Discord bot token missing for account "default"` heartbeat failures between
+  Nov 2–4, but **zero since Nov 5** — dormant, still needs an owner decision.
+- `elle.service` crash loop continues (NRestarts 75,778 by Nov 7, ~30 s apart) — still needs
+  `sudo systemctl disable --now elle.service` (no passwordless sudo on this box).
