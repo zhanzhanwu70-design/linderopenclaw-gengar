@@ -236,3 +236,9 @@
   Nov 2–4, but **zero since Nov 5** — dormant, still needs an owner decision.
 - `elle.service` crash loop continues (NRestarts 75,778 by Nov 7, ~30 s apart) — still needs
   `sudo systemctl disable --now elle.service` (no passwordless sudo on this box).
+- **Heartbeat hard cap math (confirmed 2026-11-14):**
+  `dist/heartbeat-runner-jhGs3jbv.js` → `timeout = min(DEFAULT_HEARTBEAT_TIMEOUT_SECONDS=600,
+  ceil(intervalMs/1000))`. The cap can only get *smaller* with a shorter interval, never
+  larger — no config raises it, and `--timeout-seconds` is rejected for heartbeat jobs.
+  Therefore: **one bounded check per heartbeat turn, then reply.** Long turns are killed at
+  600 s and counted as failures (auto-disable at 10 consecutive).
