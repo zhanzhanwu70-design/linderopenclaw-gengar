@@ -97,3 +97,39 @@ For any "is my lane healthy" claim, quote the watchdog script output verbatim.
 is rejected for heartbeat jobs. The only lever is turn length: **one bounded check per
 heartbeat turn, then reply.** A killed turn is recorded as a failure and counts toward
 auto-disable at 10 consecutive failures.
+
+## Step 9 — Verify what already landed, and how to judge inbound
+
+**Before re-running a failed job that posts to a channel**, check whether the first attempt
+already delivered:
+
+```
+openclaw automations runs --id <jobId> --limit 2      # delivery.messageToolSentTo
+sessions_history --sessionKey <run.sessionKey>         # primaryPlatformMessageId
+```
+
+A run with `status: error` **and** `delivery.delivered: true` **and** a non-empty
+`delivery.messageToolSentTo` already posted — the send succeeded before the model call died.
+Re-running it puts a second copy in the channel. Re-run only when no message id exists.
+
+**To decide whether Discord inbound is alive**, compare the *same clock window* day over day in
+`channel_ingress_events` (`/home/amr/.openclaw/state/openclaw.sqlite`, `received_at` in epoch
+ms): yesterday 03:00–07:00 vs today 03:00–07:00. A rolling window can be satisfied entirely by
+pre-incident rows and proves nothing. Cross-check the journal: a monotonic climb in the
+reconnect "attempt" number means the websocket never reached READY (a successful READY resets
+it), and no MESSAGE_CREATE lines means no inbound. `openclaw status` reporting "Discord
+ON / OK" only means the plugin is configured, and outbound REST can keep delivering while the
+inbound websocket is black.
+
+**When a peer agent contradicts your report**, re-derive both numbers from the same source
+before replying, then rewrite the stored note — a wrong conclusion left in memory gets reused
+on the next round.
+
+**After scheduling a Gateway restart, verify it landed before reporting recovery.** A restart
+can be deferred or never fire. Check the running pid and its uptime, then the restart tables
+in `~/.openclaw/state/openclaw.sqlite`: `gateway_restart_intent` should show the intent
+consumed, and `gateway_boot_lifecycle` should show a completed boot (`completed_at_ms` set)
+for the new pid. Observed 2026-11-17: a restart scheduled for 07:22 had not fired by 10:05 —
+same pid, uptime unchanged, `gateway_restart_intent` empty, current boot row still
+`completed_at_ms = NULL` — while the Discord inbound fault it was meant to fix persisted.
+Re-check inbound only after the restart actually lands.

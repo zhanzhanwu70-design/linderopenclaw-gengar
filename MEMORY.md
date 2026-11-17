@@ -242,3 +242,17 @@
   larger — no config raises it, and `--timeout-seconds` is rejected for heartbeat jobs.
   Therefore: **one bounded check per heartbeat turn, then reply.** Long turns are killed at
   600 s and counted as failures (auto-disable at 10 consecutive).
+- **Discord inbound can die silently while outbound keeps working** (2026-11-17): inbound
+  (websocket) was black from 03:00 — 0 successful READY, reconnect attempt counter climbing
+  monotonically (1 → 763, never reset), 0 MESSAGE_CREATE, 8 bots exiting with "gateway
+  opened but did not reach READY within 30000ms" — while outbound REST still delivered
+  (cron sends succeeded). Trigger was event-loop starvation 03:00–03:31 from the dreaming
+  cron `36b493db`; the event loop recovered but the client state machine stayed stuck.
+  Diagnose with `channel_ingress_events` in `/home/amr/.openclaw/state/openclaw.sqlite`
+  (**same clock window day over day**, not a rolling window), plus the journal's READY
+  attempt counter. `openclaw status` showing "Discord ON / OK" only means configured.
+- **Cron recovery rule:** a run with `status=error` **and** `delivery=delivered` +
+  `delivery.messageToolSentTo` has ALREADY posted to the channel — check the run transcript
+  for `primaryPlatformMessageId` before re-running, or you double-post. (2026-11-17: the
+  05:00 English reminder posted id 1571993313345544264 and then failed on a 429; the 05:02
+  retry posted 1571993859565818024 → Linder got two.)
