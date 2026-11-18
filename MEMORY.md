@@ -256,3 +256,14 @@
   for `primaryPlatformMessageId` before re-running, or you double-post. (2026-11-17: the
   05:00 English reminder posted id 1571993313345544264 and then failed on a 429; the 05:02
   retry posted 1571993859565818024 → Linder got two.)
+- **Discord health must be read at the RUNTIME layer, not the config layer** (2026-11-18):
+  `openclaw status` reports "Discord ON / state OK / accounts 9/9" from config/tokens and
+  stays green while every bot is dead. The truth is `openclaw channels status`, which shows
+  per-account `error:startup-not-ready, running, disconnected`. Use that, plus ingress-row
+  recency from `channel_ingress_events`, never the config summary.
+- **Recurring daily 03:00 Discord-outage root cause (2026-11-17 and 2026-11-18, both):** the
+  Memory Dreaming Promotion cron `36b493db` runs 03:00 with `toolsAllow: ["*"]` and **no
+  `timeoutSeconds`**, runs ~30 min, starves the gateway event loop, all 8 Discord clients die
+  (close 1000) and READY is never reached → inbound black for ~10 h while outbound REST keeps
+  working. Fix candidates: give that job a `timeoutSeconds`, or move it off 03:00.
+- **Escalate via the operator UI, not Discord**, while Discord inbound is dead.

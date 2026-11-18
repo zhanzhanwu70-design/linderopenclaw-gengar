@@ -133,3 +133,50 @@ for the new pid. Observed 2026-11-17: a restart scheduled for 07:22 had not fire
 same pid, uptime unchanged, `gateway_restart_intent` empty, current boot row still
 `completed_at_ms = NULL` — while the Discord inbound fault it was meant to fix persisted.
 Re-check inbound only after the restart actually lands.
+
+## Step 10 — Read the state DB safely (WAL) and report without noise
+
+`~/.openclaw/state/openclaw.sqlite` runs in **WAL mode**: a read-only connection sees only
+checkpointed data, so a freshly written row (new `operator_approvals` ticket, new ingress
+event) is invisible until the WAL is checkpointed. Copy all three files before querying:
+
+```
+cp ~/.openclaw/state/openclaw.sqlite        /tmp/db.sqlite
+cp ~/.openclaw/state/openclaw.sqlite-wal    /tmp/db.sqlite-wal   # when present
+cp ~/.openclaw/state/openclaw.sqlite-shm    /tmp/db.sqlite-shm   # when present
+python3 -c "import sqlite3; con=sqlite3.connect('file:/tmp/db.sqlite?mode=ro',uri=True); ..."
+```
+
+Copying only the `.sqlite` file makes a just-created approval look nonexistent. Always
+verify a fresh row with the full WAL copy before reporting it as missing.
+
+**Embedded helper rules** (any sqlite snippet you ship in a script):
+- Parameterize SQL; pass the DB path via `argv`, never by formatting it into the script.
+- Never `%`-format a script containing `strftime('%m-%d %H:%M')` — the format spec corrupts
+  the string and the helper silently returns an empty result.
+- Print failures to **stderr**; a swallowed exception is indistinguishable from "no problems".
+- Verify a helper by running it twice and diffing the output.
+
+**Standing faults must be de-duplicated**: announce when the state *changes*, otherwise at
+most every few hours. Key the signature on stable facts only (newest row, counts) — never on
+a value that drifts each cycle (e.g. "age in hours"), or the signature changes and the notice
+repeats every run. Keep the signature plus a timestamp in a small state file.
+
+**Gateway-restart approval tickets are 10-minute windows.** Report them as their own line
+with the expiry, so the owner sees the open window. Suppress an *expired* ticket once the
+Gateway has restarted since it was raised: compare the Gateway process start time with the
+ticket's creation time, or a stale ticket re-alerts forever.
+
+**When the restart lands**, verify recovery by the **first ingress row after the Gateway
+start**, not by the restart log. Observed 2026-11-17: Gateway restarted 13:19:32, first
+ingress row 13:20:48 — inbound back 76 s later, hourly ingress immediately returning to its
+normal band. Outbound REST was never the broken half, so a successful cron delivery is not
+evidence that inbound recovered.
+
+## Step 11 — Lane report fields
+
+Enumerate jobs with `openclaw automations list --all --json`; the default listing omits
+disabled jobs and undercounts. Report per job: id, name, enabled, lastStatus,
+consecutiveErrors, last run, nextRun. When grepping logs for `401|403`, exclude PIDs — a
+crash-looping service prints its pid on every line (`elle.sh[2690401]` matched a 401 scan
+with no auth error).

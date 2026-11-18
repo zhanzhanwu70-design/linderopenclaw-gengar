@@ -184,6 +184,7 @@ for approval_id, status, created, expires, presentation in rows:
         'id': approval_id,
         'status': status,
         'created': fmt(created),
+        'created_ms': created,
         'expires': fmt(expires),
         'expires_ms': expires,
     })
@@ -211,22 +212,32 @@ con = sqlite3.connect('file:' + sys.argv[1] + '?mode=ro', uri=True)
 tz = datetime.timezone(datetime.timedelta(hours=8))
 now = int(time.time() * 1000)
 now_dt = datetime.datetime.fromtimestamp(now / 1000, tz)
-start_cur = now_dt.replace(minute=0, second=0, microsecond=0) - datetime.timedelta(hours=3)
-start_y = start_cur - datetime.timedelta(days=1)
-a1, a2 = int(start_cur.timestamp() * 1000), now
-b1 = int(start_y.timestamp() * 1000)
-b2 = b1 + (a2 - a1)
-cur = list(con.execute(
-    'select count(*) from channel_ingress_events where received_at>=? and received_at<?', (a1, a2)))[0][0]
-yest = list(con.execute(
-    'select count(*) from channel_ingress_events where received_at>=? and received_at<?', (b1, b2)))[0][0]
+def window(minutes):
+    # Rolling window, compared against the SAME clock window on previous days.
+    # Yesterday alone is not a reliable baseline when yesterday was broken the same
+    # way - use the max over the last 7 days instead.
+    a1, a2 = now - minutes * 60 * 1000, now
+    cur = list(con.execute(
+        'select count(*) from channel_ingress_events where received_at>=? and received_at<?', (a1, a2)))[0][0]
+    baseline = []
+    for day in range(1, 8):
+        b1, b2 = a1 - day * 24 * 3600 * 1000, a2 - day * 24 * 3600 * 1000
+        baseline.append(list(con.execute(
+            'select count(*) from channel_ingress_events where received_at>=? and received_at<?',
+            (b1, b2)))[0][0])
+    return cur, max(baseline) if baseline else 0, baseline
+cur3, yest3, _ = window(180)
+cur1, yest1, _ = window(60)
+cur45, yest45, _ = window(45)
 newest = list(con.execute('select max(received_at) from channel_ingress_events'))[0][0]
 def fmt(ms):
     try:
         return datetime.datetime.fromtimestamp(ms / 1000, tz).strftime('%m-%d %H:%M')
     except Exception:
         return '?'
-print(json.dumps({'current': cur, 'yesterday': yest, 'newest_ms': newest, 'newest': fmt(newest)}))
+print(json.dumps({'current': cur3, 'yesterday': yest3, 'current_1h': cur1,
+                  'yesterday_1h': yest1, 'current_45m': cur45, 'yesterday_45m': yest45,
+                  'newest_ms': newest, 'newest': fmt(newest)}))
 """
         return run_sqlite_script(script, db)
     finally:
@@ -259,34 +270,111 @@ def fmt_ms(ms):
         return "?"
 
 
+def discord_runtime_state():
+    """Runtime layer of the Discord accounts.
+
+    `openclaw status` only reports the CONFIG layer ("Discord ON / OK / accounts
+    9/9") - that stays green while every bot is actually disconnected. The
+    runtime truth is `openclaw channels status`, which reports per-account
+    "error:startup-not-ready, running, disconnected".
+    """
+    try:
+        proc = subprocess.run(
+            ["openclaw", "channels", "status"], capture_output=True, text=True, timeout=120)
+    except Exception as exc:  # noqa: BLE001
+        sys.stderr.write("channels status failed: %s\n" % exc)
+        return None
+    if proc.returncode != 0:
+        sys.stderr.write("channels status failed: " + (proc.stderr or "").strip()[:200] + "\n")
+        return None
+    broken = []
+    enabled = 0
+    for line in (proc.stdout or "").splitlines():
+        if not line.strip().startswith("- Discord"):
+            continue
+        if "enabled," not in line and "disabled," not in line:
+            continue
+        name = line.split(":", 1)[0].replace("- Discord", "").strip()
+        if "disabled" in line:
+            continue
+        enabled += 1
+        if "disconnected" in line or "startup-not-ready" in line or "error:" in line:
+            broken.append(name)
+    return {"enabled": enabled, "broken": broken}
+
+
+def gateway_start_ms():
+    """Epoch ms when the current Gateway process started, or None."""
+    try:
+        proc = subprocess.run(
+            ["pgrep", "-f", "openclaw/dist/index.js"], capture_output=True, text=True, timeout=15)
+        pids = [p for p in proc.stdout.split() if p.strip()]
+        if not pids:
+            return None
+        ps = subprocess.run(
+            ["ps", "-o", "lstart=", "-p", pids[0]], capture_output=True, text=True, timeout=15)
+        raw = ps.stdout.strip()
+        if not raw:
+            return None
+        dt = datetime.datetime.strptime(raw, "%a %b %d %H:%M:%S %Y")
+        return int(dt.timestamp() * 1000)
+    except Exception:
+        return None
+
+
 for ticket in gateway_restart_approvals():
     if ticket.get("status") == "pending":
         problems.append(
             "Gateway restart approval PENDING (id %s) - Linder has a ~10 min approval "
             "window open now, expires %s" % (ticket["id"], ticket["expires"]))
     elif ticket.get("status") == "expired":
-        # Only the most recent expiry is worth a line; older ones would make the
-        # watchdog alert on every cycle forever.
+        # Only report an expiry while the Gateway has NOT been restarted since the
+        # ticket was raised - once a restart happened, the stale ticket is noise.
+        started = gateway_start_ms()
+        created = ticket.get("created_ms")
+        if started is not None and created is not None and started > created:
+            continue
         problems.append(
             "Gateway restart approval EXPIRED without a decision (id %s, expired %s) - "
             "a new approval must be created" % (ticket["id"], ticket["expires"]))
         break
 
 inbound = discord_inbound_state()
-if inbound and inbound.get("current") == 0 and int(inbound.get("yesterday") or 0) > 0:
-    age_h = None
+if inbound:
+    age_min = None
     if inbound.get("newest_ms"):
-        age_h = round((datetime.datetime.now().timestamp() * 1000 - inbound["newest_ms"]) / 3600000, 1)
-    # Signature must use stable facts only (the age changes every cycle and would
-    # defeat the de-duplication).
-    signature = "inbound_black|%s|%s|%s" % (
-        inbound.get("newest"), inbound.get("current"), inbound.get("yesterday"))
+        age_min = round((datetime.datetime.now().timestamp() * 1000 - inbound["newest_ms"]) / 60000)
+    # A rolling 3 h window dilutes a fresh cliff, so compare the last hour too.
+    fresh_cliff = (inbound.get("current_45m") == 0 and int(inbound.get("yesterday_45m") or 0) > 0)
+    # Staleness: the newest row can still be inside the last hour while traffic
+    # already died (that is exactly the 03:32 case) - treat "nothing newer than
+    # 30 min" as a cliff too, as long as the same clock window had traffic on
+    # one of the previous 7 days.
+    stale = (age_min is not None and age_min > 30 and int(inbound.get("yesterday_45m") or 0) > 0)
+    wide_cliff = (inbound.get("current") == 0 and int(inbound.get("yesterday") or 0) > 0)
+    if fresh_cliff or stale or wide_cliff:
+        signature = "inbound_black|%s|%s|%s|%s|%s" % (
+            inbound.get("newest"), inbound.get("current_45m"), inbound.get("yesterday_45m"),
+            inbound.get("current_1h"), inbound.get("current"))
+        if not notice_suppressed(signature):
+            problems.append(
+                "Discord INBOUND looks black: %s ingress rows in the last 45 min (3 h window: %s) "
+                "vs a %s-row baseline for the same clock window on previous days; newest ingress "
+                "row %s (~%s min ago). Websocket clients stuck in READY-timeout backoff - "
+                "outbound REST still works"
+                % (inbound.get("current_45m"), inbound.get("current"), inbound.get("yesterday_45m"),
+                   inbound.get("newest"), age_min))
+
+runtime = discord_runtime_state()
+if runtime and runtime.get("broken"):
+    signature = "discord_runtime|%s|%s" % (
+        len(runtime["broken"]), runtime.get("enabled"))
     if not notice_suppressed(signature):
         problems.append(
-            "Discord INBOUND looks black: 0 ingress rows in the last 3 h vs %s in the same "
-            "clock window yesterday; newest ingress row %s (~%s h ago). Websocket clients "
-            "stuck in READY-timeout backoff - outbound REST still works"
-            % (inbound.get("yesterday"), inbound.get("newest"), age_h))
+            "Discord RUNTIME layer broken: %s of %s enabled accounts disconnected "
+            "(error:startup-not-ready) per `openclaw channels status` - `openclaw status` "
+            "still shows Discord ON/OK because that is the config layer only"
+            % (len(runtime["broken"]), runtime.get("enabled")))
 
 if not problems:
     print("NO_REPLY")
