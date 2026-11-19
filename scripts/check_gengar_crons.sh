@@ -40,6 +40,14 @@ JOBS = [
     ("88810bfe-4ecc-4a99-99e6-541ba5d2cc1e", "BBC News drill"),
 ]
 
+# The memory-core dreaming promotion job is the ROOT CAUSE of the recurring
+# 03:00 outage (2026-11-17/18/19): it runs with toolsAllow ["*"], no
+# timeoutSeconds, and starves the gateway event loop for ~30 min, killing every
+# Discord websocket client. The durable fix is Linder's call (plugin config or a
+# manual payload.timeoutSeconds), so the watchdog only reports the signature.
+DREAMING_JOB_ID = "36b493db-deee-471d-a5a9-955d2455d067"
+DREAMING_STARVATION_MS = 20 * 60 * 1000
+
 
 def run_json(args):
     """Return (parsed_json, error_message)."""
@@ -245,19 +253,36 @@ print(json.dumps({'current': cur3, 'yesterday': yest3, 'current_1h': cur1,
 
 
 def notice_suppressed(signature):
-    """Rate-limit a standing fault: report on change, else at most every 6 h."""
+    """Rate-limit a standing fault: report on change, else at most every 6 h.
+
+    The state file keeps ONE entry per signature (not a single global slot):
+    several independent faults can be live at the same time (e.g. the dreaming
+    starvation and a Discord blackout), and a single slot would make them
+    alternate and re-report every cycle.
+    """
     try:
         with open(NOTICE_STATE, "r", encoding="utf-8") as fh:
             prev = json.load(fh)
     except Exception:
         prev = {}
     now = int(datetime.datetime.now().timestamp() * 1000)
-    if prev.get("signature") == signature and now - int(prev.get("ts", 0)) < 6 * 3600 * 1000:
+    entries = prev.get("signatures")
+    if not isinstance(entries, dict):
+        # Legacy single-slot format -> seed it with the old signature.
+        entries = {}
+        if prev.get("signature"):
+            entries[prev["signature"]] = int(prev.get("ts", 0))
+    last = int(entries.get(signature, 0))
+    if now - last < 6 * 3600 * 1000:
         return True
+    entries[signature] = now
+    # Prune entries that are older than a day so the file cannot grow forever.
+    cutoff = now - 24 * 3600 * 1000
+    entries = {k: v for k, v in entries.items() if int(v) >= cutoff}
     try:
         os.makedirs(os.path.dirname(NOTICE_STATE), exist_ok=True)
         with open(NOTICE_STATE, "w", encoding="utf-8") as fh:
-            json.dump({"signature": signature, "ts": now}, fh)
+            json.dump({"signatures": entries}, fh)
     except Exception as exc:  # noqa: BLE001
         sys.stderr.write("notice state write failed: %s\n" % exc)
     return False
@@ -339,6 +364,30 @@ for ticket in gateway_restart_approvals():
             "a new approval must be created" % (ticket["id"], ticket["expires"]))
         break
 
+runtime = discord_runtime_state()
+runtime_broken = bool(runtime and runtime.get("broken"))
+
+# Dreaming-job starvation check (root cause, checked before the symptom).
+dreaming, dreaming_err = run_json(["openclaw", "automations", "get", DREAMING_JOB_ID])
+if dreaming is not None:
+    d_state = dreaming.get("state") or {}
+    d_payload = dreaming.get("payload") or {}
+    d_dur = d_state.get("lastDurationMs") or 0
+    d_timeout = d_payload.get("timeoutSeconds")
+    if d_dur >= DREAMING_STARVATION_MS and not d_timeout:
+        signature = "dreaming_starvation|%s|%s" % (d_dur, d_timeout)
+        if not notice_suppressed(signature):
+            problems.append(
+                "Memory Dreaming Promotion %s ran %.1f min with NO timeoutSeconds - it "
+                "starves the gateway event loop and kills every Discord websocket "
+                "(recurring 03:00 blackout on 11-17/18/19). Fix needs either "
+                "payload.timeoutSeconds on this job or "
+                "plugins.entries.memory-core.config.dreaming.execution.timeoutMs "
+                "(Linder's decision)"
+                % (DREAMING_JOB_ID[:8], d_dur / 60000.0))
+elif dreaming_err:
+    sys.stderr.write("dreaming job read failed: %s\n" % dreaming_err)
+
 inbound = discord_inbound_state()
 if inbound:
     age_min = None
@@ -352,7 +401,18 @@ if inbound:
     # one of the previous 7 days.
     stale = (age_min is not None and age_min > 30 and int(inbound.get("yesterday_45m") or 0) > 0)
     wide_cliff = (inbound.get("current") == 0 and int(inbound.get("yesterday") or 0) > 0)
-    if fresh_cliff or stale or wide_cliff:
+    # QUIET-HOUR GUARD (2026-11-19): a 45-minute gap with no ingress is NOT an
+    # outage - between 01:00 and 06:00 Discord traffic simply stops, so the
+    # 45 m / 30 min heuristics fired twice on 2026-11-19 (02:04 and 06:04) while
+    # every account was `running, connected` and ingress resumed on its own.
+    # A real black-out (2026-11-17/18) has BOTH properties:
+    #   (a) ingress dead for far longer than a quiet lull (>= 90 min), and
+    #   (b) the RUNTIME layer actually broken (accounts disconnected /
+    #       startup-not-ready) - `openclaw status` stays green because it only
+    #       reads the config layer.
+    # Require one of them, otherwise a lull is reported as an outage.
+    dead_long = (age_min is not None and age_min >= 90)
+    if (fresh_cliff or stale or wide_cliff) and (dead_long or runtime_broken):
         signature = "inbound_black|%s|%s|%s|%s|%s" % (
             inbound.get("newest"), inbound.get("current_45m"), inbound.get("yesterday_45m"),
             inbound.get("current_1h"), inbound.get("current"))
@@ -365,8 +425,7 @@ if inbound:
                 % (inbound.get("current_45m"), inbound.get("current"), inbound.get("yesterday_45m"),
                    inbound.get("newest"), age_min))
 
-runtime = discord_runtime_state()
-if runtime and runtime.get("broken"):
+if runtime_broken:
     signature = "discord_runtime|%s|%s" % (
         len(runtime["broken"]), runtime.get("enabled"))
     if not notice_suppressed(signature):

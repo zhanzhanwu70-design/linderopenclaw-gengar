@@ -180,6 +180,27 @@
   `openclaw automations enable <id>` clears the streak and the autoDisabled flag.
 - Watchdog script: `/home/amr/.openclaw/workspace-gengar/scripts/check_gengar_crons.sh`
   (guards the English reminder + BBC News drill). <!-- project: github.com/zhanzhanwu70-design/linderopenclaw-gengar -->
+- **A quiet-hour ingress lull is NOT an outage** (2026-11-19): the inbound-cliff heuristics
+  (45 m window = 0 rows, staleness > 30 min) fired twice on 2026-11-19 (02:04 and 06:04)
+  while all 8 Discord accounts were `running, connected` and ingress resumed on its own —
+  Discord traffic simply stops between ~01:00 and 06:00. The alert is now gated on a real
+  fault: `dead_long` (no ingress for >= 90 min) **OR** a broken runtime layer
+  (`openclaw channels status` showing disconnected / `startup-not-ready`). A genuine
+  black-out (2026-11-17/18) has both. <!-- project: github.com/zhanzhanwu70-design/linderopenclaw-gengar -->
+- **Standing-fault notices need per-signature de-duplication** (2026-11-19): a single notice
+  slot made the dreaming-starvation and inbound-blackout reports alternate (each
+  re-reporting every cycle). The notice state file now keeps one timestamp per signature
+  under `{"signatures": {...}}`; the legacy single-slot format is migrated on read.
+  <!-- project: github.com/zhanzhanwu70-design/linderopenclaw-gengar -->
+- **Dreaming-starvation fix levers (verified in `dist/dreaming-*.js`, NOT applied)**:
+  `openclaw automations edit 36b493db --timeout-seconds N` sets `payload.timeoutSeconds`
+  (the CLI rejects `--timeout-seconds` only for heartbeat-kind jobs) and the memory-core
+  reconcile patch never rewrites `payload.timeoutSeconds`, so a manual timeout survives
+  reconciliation; the plugin config `plugins.entries.memory-core.config.dreaming` also
+  supports `frequency`, `execution.timeoutMs` and per-phase
+  `phases.{light,deep,rem}.execution.timeoutMs` via `resolveMemoryDreamingConfig`.
+  Both are Linder's call (shared plugin + shared gateway).
+  <!-- project: github.com/zhanzhanwu70-design/linderopenclaw-gengar -->
 
 ## Host / Gateway Health Facts (learned 2026-11-01)
 
