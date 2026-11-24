@@ -288,6 +288,34 @@ def notice_suppressed(signature):
     return False
 
 
+def prune_notice_signatures(prefix):
+    """Drop de-dup entries for a fault that is no longer live.
+
+    notice_suppressed() remembers a signature for 6 h. If a fault heals (e.g.
+    the Discord account reconnects) and breaks again inside that window, the
+    identical signature would still be suppressed and the NEW outage would stay
+    silent for up to 6 h. Pruning on recovery keeps the de-dup about LIVE
+    faults: a healed fault leaves no trace, a fresh break alerts again.
+    """
+    try:
+        with open(NOTICE_STATE, "r", encoding="utf-8") as fh:
+            prev = json.load(fh)
+    except Exception:
+        return
+    entries = prev.get("signatures")
+    if not isinstance(entries, dict):
+        return
+    kept = {k: v for k, v in entries.items() if not str(k).startswith(prefix)}
+    if kept == entries:
+        return
+    try:
+        os.makedirs(os.path.dirname(NOTICE_STATE), exist_ok=True)
+        with open(NOTICE_STATE, "w", encoding="utf-8") as fh:
+            json.dump({"signatures": kept}, fh)
+    except Exception as exc:  # noqa: BLE001
+        sys.stderr.write("notice state prune failed: %s\n" % exc)
+
+
 def fmt_ms(ms):
     try:
         return datetime.datetime.fromtimestamp(ms / 1000).strftime("%m-%d %H:%M")
@@ -366,6 +394,10 @@ for ticket in gateway_restart_approvals():
 
 runtime = discord_runtime_state()
 runtime_broken = bool(runtime and runtime.get("broken"))
+if not runtime_broken:
+    # Every enabled account is connected -> the runtime fault is not live.
+    # Forget its de-dup entry so a NEW disconnect alerts right away.
+    prune_notice_signatures("discord_runtime|")
 
 # Dreaming-job starvation check (root cause, checked before the symptom).
 dreaming, dreaming_err = run_json(["openclaw", "automations", "get", DREAMING_JOB_ID])
@@ -385,6 +417,10 @@ if dreaming is not None:
                 "plugins.entries.memory-core.config.dreaming.execution.timeoutMs "
                 "(Linder's decision)"
                 % (DREAMING_JOB_ID[:8], d_dur / 60000.0))
+    else:
+        # No starvation signature right now -> forget its de-dup entry so a
+        # future re-break (e.g. timeoutSeconds removed again) alerts at once.
+        prune_notice_signatures("dreaming_starvation|")
 elif dreaming_err:
     sys.stderr.write("dreaming job read failed: %s\n" % dreaming_err)
 
@@ -424,6 +460,12 @@ if inbound:
                 "outbound REST still works"
                 % (inbound.get("current_45m"), inbound.get("current"), inbound.get("yesterday_45m"),
                    inbound.get("newest"), age_min))
+    else:
+        # No live inbound cliff -> forget its de-dup entry (a resolved cliff must
+        # not silence the NEXT one).
+        prune_notice_signatures("inbound_black|")
+else:
+    prune_notice_signatures("inbound_black|")
 
 if runtime_broken:
     signature = "discord_runtime|%s|%s" % (
