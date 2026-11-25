@@ -143,11 +143,9 @@ python3 -c "import sqlite3; con=sqlite3.connect('file:/tmp/db.sqlite?mode=ro',ur
 Copying only the `.sqlite` file makes a just-created approval look nonexistent — always verify
 a fresh row with the full WAL copy before reporting it as missing.
 
-**Embedded helper rules** (any sqlite snippet you ship in a script): parameterize SQL and pass
-the DB path via `argv`, never by formatting it into the script; never `%`-format a script
-containing `strftime('%m-%d %H:%M')` (the format spec corrupts the string and the helper
-silently returns an empty result); print failures to **stderr** (a swallowed exception is
-indistinguishable from "no problems"); verify a helper by running it twice and diffing output.
+**Embedded helper rules:** see `references/measurement-and-state-db.md` — parameterize SQL, pass
+the DB path via `argv`, never `%`-format a script containing `strftime('%m-%d %H:%M')`, print
+failures to **stderr**, and verify a helper by running it twice and diffing output.
 
 **Standing faults must be de-duplicated**: announce only when the state *changes*, otherwise
 at most every few hours. Key the signature on stable facts (newest row, counts), never on a
